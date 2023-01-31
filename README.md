@@ -42,7 +42,7 @@ npm run build
 ```
 
 ### Base de datos
-_Para generar la mase de datos desde cero el comando es:_
+_Para generar la base de datos desde cero el comando es:_
 ```
 php artisan migrate
 ```
