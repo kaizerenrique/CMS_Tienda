@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//plantilla para modelos de grafico componentes
+Route::get('/plantilla', function () {
+    return view('plantilla');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
