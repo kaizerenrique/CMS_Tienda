@@ -45,4 +45,5 @@ npm run build
 _Para generar la base de datos desde cero el comando es:_
 ```
 php artisan migrate
+php artisan migrate --seed
 ```
