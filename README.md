@@ -38,3 +38,4 @@ _Para generar la mase de datos desde cero el comando es:_
 ```
 php artisan migrate
 ```
+cualquier cosa
