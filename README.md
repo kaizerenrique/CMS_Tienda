@@ -32,6 +32,13 @@ _Luego ejecutamos:_
 ```
 cp .env.example .env
 php artisan key:generate
+php artisan storage:link
+php artisan optimize
+```
+_NPM:_
+```
+npm install
+npm run build
 ```
 
 ### Base de datos
