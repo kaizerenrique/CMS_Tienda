@@ -30,6 +30,7 @@ composer install_
 ```
 _Luego ejecutamos:_
 ```
+cp .env.example .env
 php artisan key:generate
 ```
 
@@ -38,3 +39,6 @@ _Para generar la mase de datos desde cero el comando es:_
 ```
 php artisan migrate
 ```
+
+
+cp .env.example .env
