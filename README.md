@@ -39,6 +39,3 @@ _Para generar la mase de datos desde cero el comando es:_
 ```
 php artisan migrate
 ```
-
-
-cp .env.example .env
