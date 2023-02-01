@@ -291,6 +291,22 @@
           <span class="bg-emerald-100 text-emerald-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Success</span>
           <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Warning</span>
         </div>
+
+        <!-- Input -->
+        <br>
+        <div>
+          <input type="text" placeholder="Escribe Aqui" class="input input-bordered w-full max-w-xs rounded-full" />
+        </div>
+        <br>
+        <select class="select select-bordered rounded-full">
+          <option disabled selected>Seleccionar</option>
+          <option>Opcion 1</option>
+          <option>Opcion 2</option>
+          <option>Opcion 3</option>
+          <option>Opcion 4</option>
+          <option>Mas opciones</option>
+        </select>
+
         <br>
         <br>
         <br>
