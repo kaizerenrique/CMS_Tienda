@@ -28,4 +28,14 @@ class Banco extends Model
     {
         return $this->hasMany(Datobanco::class);
     }
+
+    /**
+     * Relación con tabla de datobancopagomovil.
+     * Banco al que pertenece los pago moviles. 
+     */
+
+     public function pagomovil()
+     {
+         return $this->hasMany(Datobancopagomovil::class);
+     }
 }

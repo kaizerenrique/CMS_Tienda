@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Datobanco extends Model
+class Datobancopagomovil extends Model
 {
     use HasFactory;
 
@@ -14,21 +14,18 @@ class Datobanco extends Model
      */
 
     protected $fillable = [
-        'nrocuenta',
-        'cuentadante',
+        'nrotelefono',
         'tipo',
         'documento',
     ];
 
     /**
-     * Relación con tabla de banco.
-     * Cuentas pertenece a un banco. 
+     * Relación con tabla de pagomovil.
+     * Numeros de pago movil pertenece a un banco. 
      */
 
-    public function banco()
-    {
+     public function banco()
+     {
         return $this->belongsTo(Banco::class);
-    }
-
-
+     }
 }
