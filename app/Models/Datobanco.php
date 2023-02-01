@@ -5,27 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Banco extends Model
+class Datobanco extends Model
 {
     use HasFactory;
 
     /**
      * Los atributos que son asignables en masa.
      */
-    
+
     protected $fillable = [
-        'codigo',
-        'nombre',
-        'rif',
+        'nrocuenta',
+        'cuentadante',
+        'tipo',
+        'documento',
     ];
 
     /**
-     * Relación con tabla de datobanco.
-     * Banco al que pertenece la cuenta. 
+     * Relación con tabla de banco.
+     * Cuentas pertenece a un banco. 
      */
 
-    public function cuentasbancarias()
+    public function banco()
     {
-        return $this->hasMany(Datobanco::class);
+        return $this->belongsTo(banco::class);
     }
+
+
 }
