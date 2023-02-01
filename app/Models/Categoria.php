@@ -20,4 +20,14 @@ class Categoria extends Model
         'slug',
         'cover_img',
     ];
+
+    /**
+     * Relación con tabla de Producto.
+     * Categoría tiene productos. 
+     */
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 }
