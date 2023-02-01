@@ -3,6 +3,7 @@
 use App\Mail\RegistroMailable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\Usuarioscomponente;
 
 
 
@@ -44,3 +45,5 @@ Route::get('/registro', function () {
     $password = '123456789';
     Mail::to('kayserenrique@gmail.com')->send(new RegistroMailable($mensajeCorreo, $name, $email, $password));
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/telegram', Usuarioscomponente::class);
