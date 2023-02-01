@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Banco;
+use File;
 
 class ConfigadminrolSeeder extends Seeder
 {
@@ -33,5 +35,15 @@ class ConfigadminrolSeeder extends Seeder
             'email' => 'dmaro006@gmail.com',
             'password' => bcrypt('123456789'),
         ]);
+
+        $json = File::get("database/data/bancos.json");
+        $data = json_decode($json);
+        foreach ($data as $obj) {
+            Banco::create(array(
+                'codigo' => $obj->codigo,
+                'nombre' => $obj->nombre,
+                'rif' => $obj->rif,
+            ));
+        };
     }
 }
