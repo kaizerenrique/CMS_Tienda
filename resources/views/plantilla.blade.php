@@ -214,25 +214,25 @@
   </section>
 <!--Botones-->
 
-<div class="bg-white px-6 py-4 my-3 w-3/4 mx-auto shadow rounded-md flex items-center">
+<div class="bg-white px-6 py-4 my-3 w-3/4 mx-auto shadow rounded-lg flex items-center">
     <button type="button"
-      class="border border-blue-700 bg-blue-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
+      class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
       Primary
     </button>
     <button type="button"
-      class="border border-emerald-700 bg-emerald-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline">
+      class="border border-emerald-700 bg-emerald-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline">
       Success
     </button>
     <button type="button"
-      class="border border-red-700 bg-red-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-800 focus:outline-none focus:shadow-outline">
+      class="border border-red-700 bg-red-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-800 focus:outline-none focus:shadow-outline">
       Error
     </button>
     <button type="button"
-      class="border border-yellow-500 bg-yellow-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-amber-600 focus:outline-none focus:shadow-outline">
+      class="border border-yellow-500 bg-yellow-500 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-amber-600 focus:outline-none focus:shadow-outline">
       Warning
     </button>
     <button type="button"
-      class="border border-cyan-500 bg-cyan-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-cyan-600 focus:outline-none focus:shadow-outline">
+      class="border border-cyan-500 bg-cyan-500 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-cyan-600 focus:outline-none focus:shadow-outline">
       Info
     </button>
   </div>
@@ -286,19 +286,19 @@
 
         <!--Badge -->
         <div>
-          <span class="bg-blue-100 text-blue-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Primary</span>
-          <span class="bg-red-100 text-red-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Error</span>
-          <span class="bg-emerald-100 text-emerald-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Success</span>
-          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Warning</span>
+          <span class="bg-blue-100 text-blue-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-lg">Primary</span>
+          <span class="bg-red-100 text-red-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-lg">Error</span>
+          <span class="bg-emerald-100 text-emerald-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-lg">Success</span>
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-lg">Warning</span>
         </div>
 
         <!-- Input Tipo Selecc-->
         <br>
         <div>
-          <input type="text" placeholder="Escribe Aqui" class="input input-bordered w-full max-w-xs rounded-full" />
+          <input type="text" placeholder="Escribe Aqui" class="input input-bordered w-full max-w-xs rounded-lg" />
         </div>
         <br>
-        <select class="select select-bordered rounded-full">
+        <select class="select select-bordered rounded-lg">
           <option disabled selected>Seleccionar</option>
           <option>Opcion 1</option>
           <option>Opcion 2</option>
@@ -317,7 +317,7 @@
               Ingresar Fecha
             </label>
             <input type="date" name="date" id="date"
-              class="w-full rounded-full border border-bg primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              class="w-full rounded-lg border border-bg primary bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
           </div>
         </div>
         <br>
@@ -364,7 +364,7 @@
             <!-- Input Text Area-->
 
         <div>
-          <textarea placeholder="Descripcion" class="textarea textarea-bordered textarea-xs rounded-full" ></textarea>
+          <textarea placeholder="Descripcion" class="textarea textarea-bordered textarea-xs rounded-lg" ></textarea>
           <br>
         </div> 
 
