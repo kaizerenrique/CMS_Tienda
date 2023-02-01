@@ -25,7 +25,7 @@
           </a>
           <div class="mt-2 sm:mt-0 sm:flex md:order-2">
             <!-- Login Button -->
-            <button type="button" class="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 md:inline-block rounded-lg">Login</button>
+            <button type="button" class="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none transition duration-500 focus:ring-4 focus:ring-blue-300 md:inline-block rounded-lg">Login</button>
             <button type="button" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg">Register</button>
             <!-- Register Button -->
             <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden" aria-controls="navbar-sticky" aria-expanded="false">
@@ -193,6 +193,47 @@
         </a>
       </article>
   </section>
-    
+<!--Botones-->
+
+  <div
+      class="bg-white px-6 py-4 my-3 w-3/4 mx-auto shadow rounded-md flex items-center"
+    >
+     <button
+      type="button"
+      class="border border-blue-700 bg-blue-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline"
+    >
+      Primary
+    </button>
+    <button
+      type="button"
+      class="border border-emerald-700 bg-emerald-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline"
+    >
+      Success
+    </button>
+    <button type="button" class="border border-red-700 bg-red-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-800 focus:outline-none focus:shadow-outline">
+    Error
+   </button>
+   <button
+  type="button"
+  class="border border-yellow-500 bg-yellow-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-amber-600 focus:outline-none focus:shadow-outline"
+   > 
+   Warning
+   </button>
+  <button
+    type="button"
+    class="border border-cyan-500 bg-cyan-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-cyan-600 focus:outline-none focus:shadow-outline"
+   > 
+   Info
+   </button>
+  </div>
+<!--Alertas-->
+
+<div class="flex bg-blue-100 rounded-lg p-4 mb-4 text-sm text-blue-700" role="alert">
+  <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+  <div>
+      <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
+  </div>
+</div>
+
 </body>
 </html>
