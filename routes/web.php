@@ -1,6 +1,10 @@
 <?php
 
+use App\Mail\RegistroMailable;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +34,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::get('/registro', function () {
+    //$correo = new RegistroMailable;
+    $mensajeCorreo = 'Por medio de este correo le damos la bienvenid@, puedes ingresar usando las siguientes credenciales: ';
+    $name = 'Oliver Gomez';
+    $email = 'kayserenrique@gmail.com';
+    $password = '123456789';
+    Mail::to('kayserenrique@gmail.com')->send(new RegistroMailable($mensajeCorreo, $name, $email, $password));
 });
