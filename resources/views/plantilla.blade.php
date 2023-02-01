@@ -25,7 +25,7 @@
             d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
         </svg>
 
-        <span class="self-center whitespace-nowrap text-xl font-semibold">Termcode</span>
+        <span class="self-center whitespace-nowrap text-xl font-semibold">Tienda</span>
       </a>
       <div class="mt-2 sm:mt-0 sm:flex md:order-2">
         <!-- Login Button -->
@@ -367,7 +367,13 @@
           <textarea placeholder="Descripcion" class="textarea textarea-bordered textarea-xs rounded-full" ></textarea>
           <br>
         </div> 
+        
 
+        <!-- Crear File Input-->
+        <div>
+          <br>
+           
+        </div>
 
     <!--Pie de Pagina-->
     <footer class="footer footer-center p-10 bg-primary text-primary-content">
