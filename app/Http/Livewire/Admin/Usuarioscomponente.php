@@ -19,9 +19,9 @@ class Usuarioscomponente extends Component
 
         //$nac = 'V';
         //$cedula = '20124379';
-        $usd = $this->valorbcv();
+        //$usd = $this->valorbcv();
         //$identidad = $this->ceduladeidentidad($nac, $cedula);
-        dd($usd);
+        //dd($usd);
 
         return view('livewire.admin.usuarioscomponente');
     }

@@ -41,6 +41,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('admin/categorias', functio
     return view('admin/categorias');
 })->name('categorias');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('admin/productos', function () {
+    return view('admin/productos');
+})->name('productos');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('admin/usuarios', function () {
+    return view('admin/usuarios');
+})->name('usuarios');
+
 
 Route::get('/registro', function () {
     //$correo = new RegistroMailable;
