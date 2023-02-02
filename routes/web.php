@@ -37,6 +37,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->get('admin/categorias', function () {
+    return view('admin/categorias');
+})->name('categorias');
+
+
 Route::get('/registro', function () {
     //$correo = new RegistroMailable;
     $mensajeCorreo = 'Por medio de este correo le damos la bienvenid@, puedes ingresar usando las siguientes credenciales: ';
