@@ -30,4 +30,9 @@ class Categoria extends Model
     {
         return $this->hasMany(Producto::class);
     }
+
+    public function scopeActivo( $query)
+    {
+        return $query->where('stado', 1);
+    }
 }

@@ -10,6 +10,8 @@ class Categoriacomponente extends Component
 {
     use WithPagination;
 
+    public $activo;
+
     //barra de busqueda
     public $buscar;
 
@@ -20,6 +22,11 @@ class Categoriacomponente extends Component
     public function render()
     {
         $categorias = Categoria::where('categoria', 'like', '%'.$this->buscar . '%')  //buscar por nombre de categoria 
+                                ->when($this->activo, function($query)
+                                {
+                                    //consulta solo las categorias con estatus activo
+                                    return $query->activo(); 
+                                })
                                 ->orderBy('id','desc') //ordenar de forma decendente
                                 ->paginate(10); //paginacion
         
