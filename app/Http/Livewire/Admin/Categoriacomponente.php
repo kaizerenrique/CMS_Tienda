@@ -28,15 +28,27 @@ class Categoriacomponente extends Component
                                     return $query->activo(); 
                                 })
                                 ->orderBy('id','desc') //ordenar de forma decendente
-                                ->paginate(10); //paginacion
+                                ->paginate(2); //paginacion
         
         return view('livewire.admin.categoriacomponente',[
             'categorias' => $categorias
         ]);
     }
 
-    //Actualizar tabla para corregir falla de busqueda
+    /**
+     * Corrige la numeracion de la tabla al realizar 
+     * una busqueda
+     */
     public function updatingBuscar()
+    {
+        $this->resetPage();
+    }
+
+    /**
+     * Corrige la numeracion de la tabla al estar el 
+     * chek activo
+     */
+    public function updatingActivo()
     {
         $this->resetPage();
     }
