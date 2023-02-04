@@ -53,6 +53,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('admin/clientes', function 
     return view('admin/clientes');
 })->name('clientes');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('admin/estadisticas', function () {
+    return view('admin/estadisticas');
+})->name('estadisticas');
 
 Route::get('/registro', function () {
     //$correo = new RegistroMailable;
