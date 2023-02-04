@@ -9,10 +9,16 @@
         class="input input-bordered w-full max-w-xs rounded-lg" />
     </div>
     <div class="relative w-full max-w-full flex-grow flex-1 text-right">
-      <button type="button"
-        class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
-        Primary
-      </button>
+      <button type="button" class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
+      <div class="flex items-center">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+          </svg>          
+        </span>
+        <span class="ml-2">Nueva Categoria</span>
+      </div>
+     </button>
     </div>
   </div>
   <!-- / Seccion que contiene el titulo las busquedas y el boton para registro nuevo -->
@@ -26,7 +32,7 @@
     </div>
   </div>
 
-  <!--Tabla-->
+  <!--Tabla Categoria-->
   <div class="overflow-x-auto">
     <div class="bg-white shadow-md rounded my-6">
       <table class="min-w-max w-full table-auto">
