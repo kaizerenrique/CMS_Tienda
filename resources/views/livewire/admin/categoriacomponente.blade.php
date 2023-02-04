@@ -99,7 +99,7 @@
             </td>
             <td class="py-3 px-6 text-center">
               <div class="flex item-center justify-center">
-                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" wire:click="vercategoria({{ $categoria->id }})">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -233,4 +233,60 @@
     </x-slot>
   </x-jet-dialog-modal>
   <!-- Fin del Modal para Agregar Categoria -->
+
+  <!-- Inicio del Modal para Eliminar Categoria -->
+  <x-jet-dialog-modal wire:model="modalVer">
+    <x-slot name="title">
+        {{ __('Ver categoría') }}
+    </x-slot>
+    <x-slot name="content"> 
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-4">
+        <div class="col-span-2 sm:col-span-4 md:col-span-4">
+          <x-jet-label for="nombre" value="{{ __('Nombre de Categoría') }}" />
+          <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg"
+            wire:model.defer="categoria.categoria" disabled/>
+        </div>
+        <div class="col-span-2 sm:col-span-4 md:col-span-4">
+          <x-jet-label for="descripcion" value="{{ __('Descripción de Categoría') }}" />
+          <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg"
+            wire:model.defer="categoria.descripcion" disabled/>
+        </div>
+        <div class="col-span-2 sm:col-span-4 md:col-span-4">
+          <x-jet-label for="activar" value="{{ __('¿Activar Categoría?') }}" />
+          <div class="flex items-center space-x-6">
+            <div class="flex items-center">
+              <input type="radio" name="radio1" id="radioButton1" class="h-5 w-5" wire:model.defer="categoria.stado"
+                value="1" disabled/>
+              <label for="radioButton1" class="pl-3 text-base font-medium text-[#07074D]">
+                Si
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" name="radio1" id="radioButton2" class="h-5 w-5" wire:model.defer="categoria.stado"
+                value="0" disabled/>
+              <label for="radioButton2" class="pl-3 text-base font-medium text-[#07074D]">
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+        @if ($img_ver)
+          <div class="col-span-2 sm:col-span-4 md:col-span-4">
+            <img class="mb-4 w-full" src="{{$img_ver}}" alt="">
+          </div>
+        @endif      
+      </div>
+    </x-slot>
+    <x-slot name="footer">
+        <button type="button" wire:click="$toggle('modalVer', false)" wire:loading.attr="disabled"
+          class="border border-emerald-700 bg-emerald-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline">
+          {{ __('Cerrar') }}
+        </button>
+        <button type="button" wire:click=" " wire:loading.attr="disabled"
+          class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
+          {{ __('Editar') }}
+        </button>
+    </x-slot>
+  </x-jet-dialog-modal>
+  <!-- Fin del Modal para Eliminar Categoria -->
 </div>

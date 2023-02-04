@@ -31,6 +31,10 @@ class Categoriacomponente extends Component
             ];
         }        
     }
+
+    //modal y variables ver
+    public $modalVer = false; 
+    public $img_ver;   
     
     //modal y variables para eliminar
     //una categoria
@@ -151,9 +155,16 @@ class Categoriacomponente extends Component
         session()->flash('message', 'La categoría se a creado correctamente'); 
     }
 
+    public function vercategoria(Categoria $categoria )
+    {
+        $this->categoria = $categoria;  
+        $this->img_ver = $categoria->cover_img;      
+        $this->modalVer = true;
+    }
+
     public function editarmodal( Categoria $categoria)
     {
-        
+        dd($categoria);
     }
     
 }
