@@ -8,13 +8,15 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use \App\Traits\Sluggenerador;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Str;
 
 class Categoriacomponente extends Component
 {
     use WithPagination;
     use WithFileUploads;
     use Sluggenerador;
+
+    public $slugcategoria;
 
     //modal de registro
     public $categoria, $imagen;
@@ -133,7 +135,9 @@ class Categoriacomponente extends Component
     {
         $this->validate();
         //generar el slug
-        $slug = $this->generarslug($this->categoria['categoria']);  
+        $slug = $this->generarslug($this->categoria['categoria']); 
+        $codigo = Str::random(6); 
+        $slug = $slug.'-'.$codigo;
             
         //almacenar imagen
         if (!empty($this->imagen)){
@@ -164,7 +168,11 @@ class Categoriacomponente extends Component
 
     public function editarmodal( Categoria $categoria)
     {
-        dd($categoria);
+        //dd($categoria->slug);
+
+        $slugcategoria = $categoria->slug;
+
+        return redirect()->route('editar_categoria', $slugcategoria);
     }
     
 }

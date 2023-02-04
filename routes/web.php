@@ -4,6 +4,7 @@ use App\Mail\RegistroMailable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Usuarioscomponente;
+use App\Http\Livewire\Admin\Categoriaeditcomponente;
 
 
 
@@ -40,6 +41,8 @@ Route::middleware([
 Route::middleware(['auth:sanctum', 'verified'])->get('admin/categorias', function () {
     return view('admin/categorias');
 })->name('categorias');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('admin/categorias/{slugcategoria}', Categoriaeditcomponente::class)->name('editar_categoria');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('admin/productos', function () {
     return view('admin/productos');
