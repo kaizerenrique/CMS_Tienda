@@ -279,7 +279,7 @@
               <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg"
                 wire:model.defer="categoria.descripcion" />
             </div>
-            <div class="col-span-2 sm:col-span-4 md:col-span-4">
+            <div class="col-span-2 sm:col-span-4 md:col-span-4 mb-4">
               <x-jet-label for="activar" value="{{ __('¿Activar Categoría?') }}" />
               <input type="checkbox" class="form-checkbox h-5 w-5 text-primary-500 rounded-full" 
               wire:model.defer="categoria.stado" >               
