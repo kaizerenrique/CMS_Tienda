@@ -159,6 +159,10 @@ class Categoriacomponente extends Component
         session()->flash('message', 'La categoría se a creado correctamente'); 
     }
 
+    /**
+     * Despliega el modal para 
+     * Ver categoria
+     */
     public function vercategoria(Categoria $categoria )
     {
         $this->categoria = $categoria;  
@@ -203,12 +207,11 @@ class Categoriacomponente extends Component
         }else {
             $datos = Categoria::find($this->categoria['id']);
 
+            //eliminar imagen previamente almacenada
             if(!empty($datos->cover_img)){
                 $url = str_replace('storage', 'public', $datos->cover_img);
                 Storage::delete($url);
-            }
-
-            //dd($datos->cover_img);            
+            }       
 
             $imagen = $this->imagen->store('public/categorias');
             $imagen_ruta = Storage::url($imagen);
