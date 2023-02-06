@@ -27,7 +27,7 @@
         class="input input-bordered w-full max-w-xs rounded-lg" />
     </div>
     <div class="relative w-full max-w-full flex-grow flex-1 text-right">
-        <button type="button"
+        <button type="button" wire:click="agregarproducto"
         class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
         <div class="flex items-center">
           <span>
@@ -163,6 +163,112 @@
       </x-slot>
     </x-jet-dialog-modal>
     <!-- Fin del Modal para Eliminar Producto -->
+  <!-- Inicio del Modal para Agregar Categoria -->
+  <x-jet-dialog-modal wire:model="modalAgregar">
+    <x-slot name="title">
+      {{ __('Agregar Producto')}}
+    </x-slot>
+    <x-slot name="content">
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-4">        
+        <div class="col-span-2 sm:col-span-4 md:col-span-4">
+          <x-jet-label for="nombre" value="{{ __('Nombre del Producto') }}" />
+          <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg"
+            wire:model.defer="producto.nombre" />
+            <x-jet-input-error for="producto.nombre" class="mt-2" />
+        </div>
+        <div class="col-span-2 sm:col-span-4 md:col-span-4">
+          <x-jet-label for="descripcion" value="{{ __('Descripción de Producto') }}" />
+          <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg"
+            wire:model.defer="producto.descripcion" />
+            <x-jet-input-error for="producto.descripcion" class="mt-2" />
+        </div>
+        <div class="col-span-2 sm:col-span-1 md:col-span-1">
+          <x-jet-label for="costo" value="{{ __('Precio de Producto') }}" />
+          <x-jet-input type="number" class="mt-1 input input-bordered w-full rounded-lg"
+            wire:model.defer="producto.costo" />
+            <x-jet-input-error for="producto.costo" class="mt-2" />
+        </div>
+        <div class="col-span-2 sm:col-span-1 md:col-span-1">
+          <x-jet-label for="costo" value="{{ __('Moneda') }}" />
+          <select class="mt-1 w-full select select-bordered rounded-lg" wire:model.defer="producto.metodo">
+            <option value="" selected>Seleccionar</option>
+            <option value="BS">BS</option>
+            <option value="USD">USD</option>            
+          </select>
+          <x-jet-input-error for="producto.metodo" class="mt-2" />
+        </div>
+        <div class="col-span-2 sm:col-span-2 md:col-span-2">
+          <x-jet-label for="codigo" value="{{ __('Código de Producto') }}" />
+          <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg"
+            wire:model.defer="producto.codigo" />
+            <x-jet-input-error for="producto.codigo" class="mt-2" />
+        </div>
+        <div class="col-span-2 sm:col-span-2 md:col-span-2">
+          <x-jet-label for="categoria" value="{{ __('Categoría') }}" />
+          <select name="categoria" id="categoria" wire:model.defer="producto.categoria_id" class="mt-1 block w-full select select-bordered rounded-lg">
+            <option value="" selected>Seleccionar la Categoría</option>
+            @foreach ($categorias as $categoria)
+                <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
+            @endforeach
+        </select>
+        </div>
+        <div class="col-span-2 sm:col-span-1 md:col-span-1">
+          <x-jet-label for="iva" value="{{ __('¿Tiene IVA?') }}" />
+          <input type="checkbox" class="mt-3 ml-4 form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model.defer="producto.iva" >          
+        </div>
+        <div class="col-span-2 sm:col-span-1 md:col-span-1">
+          <x-jet-label for="activar" value="{{ __('¿Activo?') }}" />
+          <input type="checkbox" class="mt-3 ml-4 form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model.defer="producto.stado" >          
+        </div>        
+        <div class="col-span-2 sm:col-span-1 md:col-span-1">
+          <x-jet-label for="destacado" value="{{ __('¿Destacado?') }}" />
+          <input type="checkbox" class="mt-3 ml-4 form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model.defer="producto.destacado" >          
+        </div>
+        <div class="col-span-2 sm:col-span-1 md:col-span-1">
+          <x-jet-label for="delivery" value="{{ __('Delivery?') }}" />
+          <input type="checkbox" class="mt-3 ml-4 form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model.defer="producto.delivery" >          
+        </div>
+        
+        
+        @if ($imagen)
+          <div class="col-span-2 sm:col-span-4 md:col-span-4">
+            <img class="mb-4 w-full" src="{{ $imagen->temporaryUrl()}}" alt="">
+          </div>
+        @endif
+        <div class="col-span-2 sm:col-span-4 md:col-span-4">
+          <x-jet-label for="imagen" value="{{ __('Imagen de Categoría') }}" />
+          <div class="flex items-center justify-center w-full">
+            <label for="dropzone-file"
+              class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                </svg>
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para Subir
+                    archivo</span></p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
+              </div>
+              <input id="dropzone-file" type="file" class="hidden" wire:model.defer="imagen" />
+              <x-jet-input-error for="imagen" class="mt-2" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </x-slot>
 
+    <x-slot name="footer">
+      <button type="button" wire:click="$toggle('modalAgregar', false)" wire:loading.attr="disabled"
+        class="border border-emerald-700 bg-emerald-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline">
+        {{ __('Cancelar') }}
+      </button>
+      <button type="button" wire:click="guardarproducto()" wire:loading.attr="disabled"
+        class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
+        {{ __('Agregar') }}
+      </button>
+    </x-slot>
+  </x-jet-dialog-modal>
+  <!-- Fin del Modal para Agregar Categoria -->
 
 </div>

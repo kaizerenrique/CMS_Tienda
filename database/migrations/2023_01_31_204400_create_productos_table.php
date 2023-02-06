@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('codigo')->nullable();//codigo alterno
             $table->boolean('stado')->default(false);//estado de del producto 
             $table->boolean('destacado')->default(false);//el producto es destacado
-            $table->boolean('delivery')->default(true);//el producto tiene impuesto IVA            
+            $table->boolean('delivery')->default(true);//el producto tiene delivery           
             $table->string('cover_img')->nullable();//imagen de de producto
             $table->string('slug');// slug para rutas
             

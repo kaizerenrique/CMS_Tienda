@@ -16,7 +16,29 @@ class Productoscomponente extends Component
     use WithFileUploads;
     use Sluggenerador;
 
-    public $producto;
+    
+    //modal de registro
+    public $producto, $imagen;
+    public $modalAgregar = false;
+
+    protected function rules()
+    {
+        if ($modalAgregar = true) {
+            return [
+                'producto.nombre' => 'required|string|min:4|max:30|unique:productos,nombre',
+                'producto.descripcion' => 'nullable|string|min:4|max:160',
+                'producto.costo' => 'required|numeric|between:0,999999999.99',
+                'producto.iva' => 'required|boolean',
+                'producto.metodo' => 'required|in:USD,BS',
+                'producto.codigo' => 'nullable|string|min:4|max:80|unique:productos,codigo',                
+                'producto.stado' => 'required|boolean',
+                'producto.destacado' => 'required|boolean',
+                'producto.delivery' => 'required|boolean',
+                'producto.categoria_id' => 'required',
+                'imagen' => 'nullable|image|max:2048'              
+            ];
+        }        
+    }
 
     //modal y variables para eliminar
     //un producto
@@ -89,13 +111,66 @@ class Productoscomponente extends Component
     public function eliminar( Producto $producto )
     {
         $this->modalEliminar = false;
-        session()->flash('message', 'Se a eliminado correctamente la categoría: '.$producto->nombre);
+        session()->flash('message', 'Se a eliminado correctamente el Producto: '.$producto->nombre);
         
         if(!empty($producto->cover_img)){
             $url = str_replace('storage','public',$producto->cover_img);
             Storage::delete($url);
         }                
 
-        $producto->delete();        
+        $producto->delete(); 
+    }
+
+    /**
+     * Despliega el modal para agregar 
+     * un producto
+     */
+    public function agregarproducto()
+    {
+        $this->reset(['producto']);
+        $this->producto['iva'] = true;
+        $this->reset(['imagen']);
+        $this->modalAgregar = true;
+    }
+
+    /**
+     * Almacena la producto en la
+     * base de datos
+     */
+    public function guardarproducto()
+    {
+        $this->validate();
+
+        //generar el slug
+        $slug = $this->generarslug($this->producto['nombre']);
+        
+        //almacenar imagen
+        if (!empty($this->imagen)){
+            $imagen = $this->imagen->store('public/productos');
+            $imagen_ruta = Storage::url($imagen);
+        } else {
+            $imagen_ruta = null;            
+        }
+
+        $categoria = Categoria::find($this->producto['categoria_id']);
+
+        $producto = $categoria->productos()->create([
+            'nombre' => $this->producto['nombre'],
+            'descripcion' => $this->producto['descripcion'],
+            'costo' => $this->producto['costo'],
+            'iva' => $this->producto['iva'],
+            'metodo' => $this->producto['metodo'],
+            'codigo' => $this->producto['codigo'],                
+            'stado' => $this->producto['stado'],
+            'destacado' => $this->producto['destacado'],
+            'delivery' => $this->producto['delivery'],
+            'cover_img' => $imagen_ruta,
+            'slug' => $slug
+        ]);
+
+        $this->modalAgregar = false;
+
+        session()->flash('message', 'Se a registrado correctamente el Producto: '.$producto->nombre);
+        
     }
 }
