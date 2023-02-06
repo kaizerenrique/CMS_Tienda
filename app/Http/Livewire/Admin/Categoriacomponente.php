@@ -8,7 +8,6 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use \App\Traits\Sluggenerador;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class Categoriacomponente extends Component
 {
@@ -135,9 +134,7 @@ class Categoriacomponente extends Component
     {
         $this->validate();
         //generar el slug
-        $slug = $this->generarslug($this->categoria['categoria']); 
-        $codigo = Str::random(6); 
-        $slug = $slug.'-'.$codigo;
+        $slug = $this->generarslug($this->categoria['categoria']);         
             
         //almacenar imagen
         if (!empty($this->imagen)){
