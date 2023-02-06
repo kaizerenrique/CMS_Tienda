@@ -203,21 +203,24 @@ class Categoriacomponente extends Component
         }else {
             $datos = Categoria::find($this->categoria['id']);
 
-            $url = str_replace('storage', 'public', $datos->cover_img);
-            $resul = Storage::delete($url);
+            if(!empty($datos->cover_img)){
+                $url = str_replace('storage', 'public', $datos->cover_img);
+                Storage::delete($url);
+            }
+
+            //dd($datos->cover_img);            
 
             $imagen = $this->imagen->store('public/categorias');
             $imagen_ruta = Storage::url($imagen);
 
-            if($resul == true){
-                $datos->categoria = $this->categoria['categoria'];
-                $datos->descripcion = $this->categoria['descripcion'];
-                $datos->stado = $this->categoria['stado'];
-                $datos->cover_img = $imagen_ruta;
-                $datos->save();         
-                $this->modalEditar = false;   
-                session()->flash('message', 'La categoría se a editado correctamente');
-            }            
+            $datos->categoria = $this->categoria['categoria'];
+            $datos->descripcion = $this->categoria['descripcion'];
+            $datos->stado = $this->categoria['stado'];
+            $datos->cover_img = $imagen_ruta;
+            $datos->save();         
+            $this->modalEditar = false;   
+            session()->flash('message', 'La categoría se a editado correctamente');
+           
         }
 
     }
