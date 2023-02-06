@@ -27,7 +27,7 @@ class Categoriacomponente extends Component
             return [
                 'categoria.categoria' => 'required|string|min:4|max:30',
                 'categoria.descripcion' => 'nullable|string|min:4|max:160',
-                'categoria.stado' => 'boolean',
+                'categoria.stado' => 'nullable|boolean',
                 'imagen' => 'nullable|image|max:2048',
             ];
         }        
@@ -36,6 +36,9 @@ class Categoriacomponente extends Component
     //modal y variables ver
     public $modalVer = false; 
     public $img_ver;   
+
+    //modal editar
+    public $modalEditar = false; 
     
     //modal y variables para eliminar
     //una categoria
@@ -134,7 +137,7 @@ class Categoriacomponente extends Component
     {
         $this->validate();
         //generar el slug
-        $slug = $this->generarslug($this->categoria['categoria']);         
+        $slug = $this->generarslugurl();         
             
         //almacenar imagen
         if (!empty($this->imagen)){
@@ -164,12 +167,51 @@ class Categoriacomponente extends Component
     }
 
     public function editarmodal( Categoria $categoria)
+    {        
+        $this->categoria = $categoria; 
+        $this->img_ver = $categoria->cover_img;
+        $this->reset(['imagen']);      
+        $this->modalEditar = true;
+    }
+
+    public function editarcategoria()
     {
-        //dd($categoria->slug);
+        $this->validate([
+            'categoria.id' => 'required',
+            'categoria.categoria' => 'required|string|min:4|max:30',
+            'categoria.descripcion' => 'nullable|string|min:4|max:160',
+            'categoria.stado' => 'nullable|boolean',
+            'imagen' => 'nullable|image|max:2048',
+        ]);
 
-        $slugcategoria = $categoria->slug;
+        if(empty($this->imagen)){
+            $datos = Categoria::find($this->categoria['id']);
+            $datos->categoria = $this->categoria['categoria'];
+            $datos->descripcion = $this->categoria['descripcion'];
+            $datos->stado = $this->categoria['stado'];
+            $datos->save();         
+            $this->modalEditar = false;   
+            session()->flash('message', 'La categoría se a editado correctamente');
+        }else {
+            $datos = Categoria::find($this->categoria['id']);
 
-        return redirect()->route('editar_categoria', $slugcategoria);
+            $url = str_replace('storage', 'public', $datos->cover_img);
+            $resul = Storage::delete($url);
+
+            $imagen = $this->imagen->store('public/categorias');
+            $imagen_ruta = Storage::url($imagen);
+
+            if($resul == true){
+                $datos->categoria = $this->categoria['categoria'];
+                $datos->descripcion = $this->categoria['descripcion'];
+                $datos->stado = $this->categoria['stado'];
+                $datos->cover_img = $imagen_ruta;
+                $datos->save();         
+                $this->modalEditar = false;   
+                session()->flash('message', 'La categoría se a editado correctamente');
+            }            
+        }
+
     }
     
 }

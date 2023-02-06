@@ -16,4 +16,10 @@ trait Sluggenerador{
         return $game;
     }
 	
+    public function generarslugurl()
+    {
+        $codigo = Str::random(24);        
+
+        return $codigo;
+    }
 }
