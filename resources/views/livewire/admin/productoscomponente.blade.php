@@ -1,4 +1,21 @@
 <div class="p-6">
+  <div>
+    @if (session()->has('message'))
+    <div class="max-w-lg mx-auto">
+      <div class="flex bg-emerald-100 rounded-lg p-4 mb-4 text-sm text-emerald-700" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-5 w-5 mr-3" fill="none"
+          viewBox="0 0 24 24">
+          <path fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd" />
+        </svg>
+        <div>
+          <span class="font-medium">{{ session('message') }}</span>.
+        </div>
+      </div>
+    </div>
+    @endif
+  </div>
    
     <!-- Seccion que contiene el titulo las busquedas y el boton para registro nuevo -->
   <div class="flex flex-wrap items-center px-4 py-2">
@@ -26,13 +43,21 @@
   <!-- / Seccion que contiene el titulo las busquedas y el boton para registro nuevo -->
 
   <div class="px-4 py-2">
-    <div class="flex-1 text-right">      
-      <label class="inline-flex items-center mt-3 ">
-        <span class="mr-2">Solo Productos Activos: </span>
-        <input type="checkbox" class="form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model="activo">
-      </label>
-    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4"> 
+      <div class="col-span-2 sm:col-span-2">
+        
+      </div>     
+      <div class="col-span-2 sm:col-span-2">
+        <div class="flex-1 text-right">      
+          <label class="inline-flex items-center mt-3 ">
+            <span class="mr-2 pt-4">Solo Productos Activos: </span>
+            <input type="checkbox" class="mt-4 form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model="activo">
+          </label>
+        </div>
+      </div>
+    </div>    
   </div>
+  
 
    <!--Tabla Producto-->
    <div class="overflow-x-auto">
@@ -41,20 +66,25 @@
         <thead>
           <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
             <th class="py-3 px-6 text-left">Nombre</th>
+            <th class="py-3 px-6 text-left">Código</th>
             <th class="py-3 px-6 text-left">Estado</th>
             <th class="py-3 px-6 text-center">Categoria</th>
-            <th class="py-3 px-6 text-center">Iten</th>
+            <th class="py-3 px-6 text-center">Precio</th>
+            <th class="py-3 px-6 text-center">Moneda</th>
             <th class="py-3 px-6 text-center">Acciones</th>
           </tr>
         </thead>
         <tbody class="text-gray-600 text-sm font-light">
-        {{-- <!-- @foreach ($categorias as $categoria)-->
+        @foreach ($productos as $producto)
           <tr class="border-b border-gray-200 hover:bg-gray-100">
             <td class="py-3 px-6 text-left whitespace-nowrap">
-         {{ $categoria->categoria }}
+              {{ $producto->nombre }}
+            </td>
+            <td class="py-3 px-6 text-left whitespace-nowrap">
+              {{ $producto->codigo }}
             </td>
             <td class="py-3 px-6 text-left">
-              @switch($categoria->stado)
+              @switch($producto->stado)
                 @case(0)
                 <span
                   class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-lg">Inactivo</span>
@@ -68,8 +98,14 @@
 
             </td>
             <td class="py-3 px-6 text-center">
-              {{ $categoria->productos->count() }}
+              {{ $producto->categoria->categoria }}
             </td>
+            <td class="py-3 px-6 text-center">
+              {{ number_format($producto->costo , 2) }}
+            </td>
+            <td class="py-3 px-6 text-center">
+              {{ $producto->metodo }}
+            </td>             
             <td class="py-3 px-6 text-center">
               <div class="flex item-center justify-center">
                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -86,7 +122,7 @@
                       d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                   </svg>
                 </div>
-                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" wire:click="consultaeliminarproducto({{ $producto->id }})">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -102,9 +138,31 @@
       </table>
     </div>
     <div class="mt-4">
-      <!--  {{ $categorias->links() }}-->--}} 
+      {{ $productos->links() }}
     </div>
   </div>
+
+    <!-- Inicio del Modal para Eliminar Producto -->
+    <x-jet-dialog-modal wire:model="modalEliminar">
+      <x-slot name="title">
+          {{ __('Borrar Producto') }}
+      </x-slot>
+      <x-slot name="content">             
+          {{$mensajemodal}}
+      </x-slot>
+  
+      <x-slot name="footer">
+          <button type="button" wire:click="$toggle('modalEliminar', false)" wire:loading.attr="disabled"
+            class="border border-emerald-700 bg-emerald-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline">
+            {{ __('Cancelar') }}
+          </button>
+          <button type="button" wire:click="eliminar({{$identificador}})" wire:loading.attr="disabled"
+            class="border border-red-700 bg-red-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-800 focus:outline-none focus:shadow-outline">
+            {{ __('Eliminar') }}
+          </button>
+      </x-slot>
+    </x-jet-dialog-modal>
+    <!-- Fin del Modal para Eliminar Producto -->
 
 
 </div>
