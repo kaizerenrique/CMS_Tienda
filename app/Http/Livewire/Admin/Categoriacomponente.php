@@ -25,7 +25,7 @@ class Categoriacomponente extends Component
     {
         if ($modalAgregar = true) {
             return [
-                'categoria.categoria' => 'required|string|min:4|max:30',
+                'categoria.categoria' => 'required|string|min:4|max:30|unique:categorias,categoria',
                 'categoria.descripcion' => 'nullable|string|min:4|max:160',
                 'categoria.stado' => 'nullable|boolean',
                 'imagen' => 'nullable|image|max:2048',
@@ -95,7 +95,6 @@ class Categoriacomponente extends Component
      */
     public function consultaeliminacategoria( Categoria $categoria )
     {
-        //dd($categoria->categoria);
         $this->mensajemodal = 'Esta seguro de querer eliminar la categoría: '.$categoria->categoria; 
         $this->identificador = $categoria->id;
         $this->modalEliminar = true;
