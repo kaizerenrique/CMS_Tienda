@@ -166,6 +166,10 @@ class Categoriacomponente extends Component
         $this->modalVer = true;
     }
 
+    /**
+     * Despliega el modal para 
+     * editar categoria
+     */
     public function editarmodal( Categoria $categoria)
     {        
         $this->categoria = $categoria; 
@@ -174,6 +178,10 @@ class Categoriacomponente extends Component
         $this->modalEditar = true;
     }
 
+    /**
+     * Guarda los cambios de categoria 
+     * en la base de datos
+     */
     public function editarcategoria()
     {
         $this->validate([
