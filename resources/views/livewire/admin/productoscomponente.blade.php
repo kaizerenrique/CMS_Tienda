@@ -78,7 +78,18 @@
         @foreach ($productos as $producto)
           <tr class="border-b border-gray-200 hover:bg-gray-100">
             <td class="py-3 px-6 text-left whitespace-nowrap">
-              {{ $producto->nombre }}
+              @if (!empty($producto->cover_img))
+                <div class="flex items-center">
+                  <div class="mr-2">
+                    <img class="w-12 h-12 rounded-full" src="{{ $producto->cover_img }}" />
+                  </div>
+                  <span>{{ $producto->nombre }}</span>
+                </div>                 
+              @else
+                <div class="flex items-center">                  
+                  <span>{{ $producto->nombre  }}</span>
+                </div>  
+              @endif                           
             </td>
             <td class="py-3 px-6 text-left whitespace-nowrap">
               {{ $producto->codigo }}
