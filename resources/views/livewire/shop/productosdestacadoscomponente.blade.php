@@ -3,9 +3,7 @@
         <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
             <a href="#">
             <div class="relative flex items-end overflow-hidden rounded-xl">
-                <img
-                src="{{ $producto->cover_img }}"
-                alt="Hotel Photo" />
+                <img src="{{ $producto->cover_img }}" alt="Hotel Photo" />
             </div>
             <div class="mt-1 p-2">
                 <h2 class="text-slate-700">{{ $producto->nombre }}</h2>
