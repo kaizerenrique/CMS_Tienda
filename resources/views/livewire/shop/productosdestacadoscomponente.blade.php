@@ -1,29 +1,29 @@
 <div class="mt-10 mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     @foreach ($productos as $producto)
-        <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">            
-            <div class="relative flex items-end overflow-hidden rounded-xl">
+        <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 relative">            
+            <div class="relative flex items-end overflow-hidden rounded-xl max-h-60 object-contain">
                 <img src="{{ $producto->cover_img }}" alt="Hotel Photo" />
             </div>
             <div class="mt-1 p-2">
                 <h2 class="text-slate-700">{{ $producto->nombre }}</h2>
                 <p class="mt-1 text-sm text-slate-400">{{ $producto->descripcion }}</p>
+                <!-- icono de delivery -->
+                @if ($producto->delivery)
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="h-4 w-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                    </svg>
+                @endif
                 <div class="mt-3 flex items-end justify-between">
                 <p>
                     <span class="text-lg font-bold text-blue-500">{{ number_format($producto->costo , 2) }}</span>
                     <span class="text-sm text-slate-400">{{ $producto->metodo }}</span>
-                    <!-- icono de delivery -->
-                    @if ($producto->delivery)
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="h-4 w-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-                        </svg>
-                    @endif
                 </p>
                 
 
                 @auth
                     <div class="flex items-center space-x-1.5 rounded-lg bg-blue-700 px-4 py-1.5
-                    text-white duration-100 hover:bg-blue-600" wire:click="agregaralcarro({{ $producto->id }})">
+                    text-white duration-100 hover:bg-blue-600 absolute m-2 bottom-0 right-0" wire:click="agregaralcarro({{ $producto->id }})">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="h-4 w-4">
                         <path stroke-linecap="round" stroke-linejoin="round"
