@@ -63,7 +63,7 @@ class Productoscomponente extends Component
                            ->orWhere('codigo', 'like', '%'.$this->buscar . '%')
                             ->when($this->activo, function($query)
                             {
-                                //consulta solo las categorias con estatus activo
+                                //consulta solo los productos con estatus activo
                                 return $query->activo(); 
                             })
                             ->orderBy('id','desc') //ordenar de forma decendente

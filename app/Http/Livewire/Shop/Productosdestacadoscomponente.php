@@ -19,6 +19,11 @@ class Productosdestacadoscomponente extends Component
         $destacados = 1; //solo destacados
         $limite = 8; //limite de productos destacados para mostrar
         $productos = Producto::where('destacado', $destacados)
+        ->when(true, function($query)
+        {
+            //consulta solo los productos con estatus activo
+            return $query->activo(); 
+        })               
         ->orderBy('id','desc')->latest()->take($limite)->get();
 
         
