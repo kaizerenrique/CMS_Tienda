@@ -34,6 +34,10 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <!--componente indicardo de carro-->
+                    <livewire:shop.cartcomponente/>
+                </div>
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">

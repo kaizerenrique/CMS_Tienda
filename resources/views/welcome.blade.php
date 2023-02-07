@@ -30,6 +30,10 @@
         <span class="self-center whitespace-nowrap text-xl font-semibold">Tienda</span>
       </a>
       <div class="mt-2 sm:mt-0 sm:flex md:order-2">
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+          <!--componente indicardo de carro-->
+          <livewire:shop.cartcomponente/>
+        </div>
         @if (Route::has('login'))
                 <div class="mt-2 sm:mt-0 sm:flex md:order-2">
                     @auth

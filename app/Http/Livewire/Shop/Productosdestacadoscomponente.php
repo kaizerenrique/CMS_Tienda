@@ -56,6 +56,7 @@ class Productosdestacadoscomponente extends Component
             'associatedModel' => $idetificador
         ));
 
-        
+        $this->emit('message', 'El Examen se ha agregado correctamente.');
+        $this->emitTo('shop.cartcomponente', 'add_carro');        
     }
 }
