@@ -1,5 +1,6 @@
 <div class="p-6">
-    <h1 class="mb-10 text-center text-2xl font-bold">Vista del Carrito</h1>
+    <h1 class="mb-11 text-center text-2xl font-bold">Administrar Carrito</h1>
+    <hr class="my-6 border-blue bg-gray-900">
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
         <div class="rounded-lg md:w-2/3">
             @foreach($cart_items as $cart_item)
@@ -13,25 +14,29 @@
                             <h2 class="text-lg font-bold text-gray-900">{{ $cart_item->name }}</h2>
                             <p class="mt-1 text-xs text-gray-700">{{ $cart_item->associatedModel->descripcion }}</p>
                             <p class="text-sm">{{ $cart_item->price }}</p>
-                        </div>
+                            <div>
+                              <hr class="my-6 border-blue bg-gray-900">
+                              <p class="text-sm font-bold">{{\Cart::session(auth()->user()->id)->get($cart_item->id)->getPriceSum()}}</p>
+                            </div>
+                            </div>
+
                         <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-                            <div class="flex items-center border-gray-100">
+                            <div class="flex items-center border-gray-300">
                                 <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100
                                  hover:bg-blue-500 hover:text-blue-50" wire:click="dec_cantidad({{ $cart_item->id }})">                                    
                                     - 
                                 </span>                        
-                                <input class="h-8 w-16 border bg-white text-center text-xs outline-none" type="text" 
+                                <input class="h-8 w-16 rounded-lg bg-white text-center text-xs outline-none" type="text" 
                                     value="{{ $cart_item->quantity }}" disabled/>                                     
-                                <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100
+                                <span class="cursor-pointer rounded-r bg-blue-400 py-2 px-4 duration-100
                                  hover:bg-blue-500 hover:text-blue-50" wire:click="inc_cantidad({{ $cart_item->id }})">                                    
                                     + 
                                 </span>                                   
                             </div>
-
+                            
                             <div class="flex items-center space-x-4">                                
-                                <p class="text-sm">{{\Cart::session(auth()->user()->id)->get($cart_item->id)->getPriceSum()}}</p>
                                 <div class="" wire:click="eliminar_item({{ $cart_item->id }})">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.50"
                                     stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
@@ -59,8 +64,7 @@
                 <p class="text-sm text-gray-700">IVA Incluido</p>
               </div>
             </div>
-            <button class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">Check
-              out</button>
+            <button class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">Cancelar Pedido</button>
         </div>
     </div>
 
