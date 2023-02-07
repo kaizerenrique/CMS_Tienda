@@ -31,9 +31,9 @@ class Productoscomponente extends Component
                 'producto.iva' => 'required|boolean',
                 'producto.metodo' => 'required|in:USD,BS',
                 'producto.codigo' => 'nullable|string|min:4|max:80|unique:productos,codigo',                
-                'producto.stado' => 'required|boolean',
-                'producto.destacado' => 'required|boolean',
-                'producto.delivery' => 'required|boolean',
+                'producto.stado' => 'nullable|boolean',
+                'producto.destacado' => 'nullable|boolean',
+                'producto.delivery' => 'nullable|boolean',
                 'producto.categoria_id' => 'required',
                 'imagen' => 'nullable|image|max:2048'              
             ];
@@ -160,6 +160,27 @@ class Productoscomponente extends Component
             $codigo = $this->producto['codigo'];
         }
 
+        if(empty($this->producto['destacado']))
+        {
+            $destacado = false;
+        } else {
+            $destacado = $this->producto['destacado'];
+        }
+
+        if(empty($this->producto['stado']))
+        {
+            $estado = false;
+        } else {
+            $estado = $this->producto['stado'];
+        }
+
+        if(empty($this->producto['delivery']))
+        {
+            $delivery = false;
+        } else {
+            $delivery = $this->producto['delivery'];
+        }
+
         $producto = $categoria->productos()->create([
             'nombre' => $this->producto['nombre'],
             'descripcion' => $this->producto['descripcion'],
@@ -167,9 +188,9 @@ class Productoscomponente extends Component
             'iva' => $this->producto['iva'],
             'metodo' => $this->producto['metodo'],
             'codigo' => $codigo,                
-            'stado' => $this->producto['stado'],
-            'destacado' => $this->producto['destacado'],
-            'delivery' => $this->producto['delivery'],
+            'stado' => $estado,
+            'destacado' => $destacado,
+            'delivery' => $delivery,
             'cover_img' => $imagen_ruta,
             'slug' => $slug
         ]);
