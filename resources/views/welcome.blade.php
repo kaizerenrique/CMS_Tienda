@@ -274,14 +274,14 @@
         </a>
       </article>  
     </section>
-      <div class="py-10 mx-auto full sm:rounded-md bg-blue-600 h-48">
-          <div class="flex justify-between bg-blue-600">
-              <div class="flex items-center max-w-md p-4  sm-auto md-4 bg-blue-600">
+      <div class="py-10 mx-auto full sm:rounded-md bg-blue-500  h-48">
+          <div class="flex justify-between bg-blue-500 ">
+              <div class="flex items-center max-w-md p-4  sm-auto md-4 bg-blue-500 ">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-12 ">
                   <path d="M16.881 4.346A23.112 23.112 0 018.25 6H7.5a5.25 5.25 0 00-.88 10.427 21.593 21.593 0 001.378 3.94c.464 1.004 1.674 1.32 2.582.796l.657-.379c.88-.508 1.165-1.592.772-2.468a17.116 17.116 0 01-.628-1.607c1.918.258 3.76.75 5.5 1.446A21.727 21.727 0 0018 11.25c0-2.413-.393-4.735-1.119-6.904zM18.26 3.74a23.22 23.22 0 011.24 7.51 23.22 23.22 0 01-1.24 7.51c-.055.161-.111.322-.17.482a.75.75 0 101.409.516 24.555 24.555 0 001.415-6.43 2.992 2.992 0 00.836-2.078c0-.806-.319-1.54-.836-2.078a24.65 24.65 0 00-1.415-6.43.75.75 0 10-1.409.516c.059.16.116.321.17.483z" />
                 </svg>                
               </div>  
-              <div class="max-w-full mx-auto bg-blue-600" >
+              <div class="max-w-full mx-auto bg-blue-500 " >
                 <p class="max-w-full mx-auto px-4 text-white">Esta publicidad del año 1967 recurre utiliza como figura retórica el movimiento de las letras que simulan 
                   el movimiento del andar suave del automóvil que publicitan.</p> 
                   <p class="max-w-full mx-auto px-4 text-white">
@@ -521,7 +521,7 @@
 
         </div>
       </section>
-      <footer class="relative bg-blue-600 pt-8 pb-6">
+      <footer class="relative bg-blue-500 pt-8 pb-6">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap text-left lg:text-left">
             <div class="w-full lg:w-6/12 px-4">
