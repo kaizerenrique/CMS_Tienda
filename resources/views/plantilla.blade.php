@@ -410,7 +410,7 @@
           </svg>
           <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para Subir
               archivo</span></p>
-          <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG</p>
         </div>
         <input id="dropzone-file" type="file" class="hidden" />
       </label>

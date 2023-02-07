@@ -190,7 +190,7 @@
         </div>
         <div class="col-span-2 sm:col-span-1 md:col-span-1">
           <x-jet-label for="costo" value="{{ __('Moneda') }}" />
-          <select class="mt-1 w-full select select-bordered rounded-lg" wire:model.defer="producto.metodo">
+          <select class="focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700 border-gray-300 mt-1 w-full select select-bordered rounded-lg" wire:model.defer="producto.metodo">
             <option value="" selected>Seleccionar</option>
             <option value="BS">BS</option>
             <option value="USD">USD</option>            
@@ -199,13 +199,13 @@
         </div>
         <div class="col-span-2 sm:col-span-2 md:col-span-2">
           <x-jet-label for="codigo" value="{{ __('Código de Producto') }}" />
-          <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg"
-            wire:model.defer="producto.codigo" />
+          <x-jet-input type="text" class="mt-1 input input-bordered w-full rounded-lg" 
+            wire:model.defer="producto.codigo" placeholder="Opcional"/>
             <x-jet-input-error for="producto.codigo" class="mt-2" />
         </div>
         <div class="col-span-2 sm:col-span-2 md:col-span-2">
           <x-jet-label for="categoria" value="{{ __('Categoría') }}" />
-          <select name="categoria" id="categoria" wire:model.defer="producto.categoria_id" class="mt-1 block w-full select select-bordered rounded-lg">
+          <select name="categoria" id="categoria" wire:model.defer="producto.categoria_id" class="focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700 border-gray-300 mt-1 block w-full select select-bordered rounded-lg">
             <option value="" selected>Seleccionar la Categoría</option>
             @foreach ($categorias as $categoria)
                 <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
@@ -225,7 +225,7 @@
           <input type="checkbox" class="mt-3 ml-4 form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model.defer="producto.destacado" >          
         </div>
         <div class="col-span-2 sm:col-span-1 md:col-span-1">
-          <x-jet-label for="delivery" value="{{ __('Delivery?') }}" />
+          <x-jet-label for="delivery" value="{{ __('¿Delivery?') }}" />
           <input type="checkbox" class="mt-3 ml-4 form-checkbox h-5 w-5 text-primary-500 rounded-full" wire:model.defer="producto.delivery" >          
         </div>
         
@@ -248,7 +248,7 @@
                 </svg>
                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para Subir
                     archivo</span></p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG</p>
               </div>
               <input id="dropzone-file" type="file" class="hidden" wire:model.defer="imagen" />
               <x-jet-input-error for="imagen" class="mt-2" />
