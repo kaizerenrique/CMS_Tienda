@@ -954,18 +954,7 @@
       <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
     </div>
   
-    <!--Shopping cart -->
-    <style>
-      @layer utilities {
-  
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-      }
-    </style>
-  
+    <!--Shopping cart -->   
     <div>
       <h1 class="mb-10 text-center text-2xl font-bold">Vista del Carrito</h1>
       <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">

@@ -57,6 +57,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('admin/estadisticas', funct
     return view('admin/estadisticas');
 })->name('estadisticas');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('shop/detalles', function () {
+    return view('shop/detalles');
+})->name('detalles');
+
 Route::get('/registro', function () {
     //$correo = new RegistroMailable;
     $mensajeCorreo = 'Por medio de este correo le damos la bienvenid@, puedes ingresar usando las siguientes credenciales: ';

@@ -34,8 +34,7 @@ class Productosdestacadoscomponente extends Component
             if($producto->metodo == 'USD'){
                 $producto->costo = $producto->costo * $bsbcv->valor;
                 $producto->metodo = 'BS';
-            }
-            
+            }            
         } 
 
         return view('livewire.shop.productosdestacadoscomponente',[
@@ -45,8 +44,12 @@ class Productosdestacadoscomponente extends Component
 
     public function agregaralcarro(Producto $idetificador)
     {
+        $bsbcv = Valorusd::latest()->first();
+        if($idetificador->metodo == 'USD'){
+            $idetificador->costo = $idetificador->costo * $bsbcv->valor;
+            $idetificador->costo = number_format($idetificador->costo, 2);
+        }
         
-
         \Cart::session(auth()->user()->id)->add(array(
             'id' => $idetificador->id,
             'name' => $idetificador->nombre,
