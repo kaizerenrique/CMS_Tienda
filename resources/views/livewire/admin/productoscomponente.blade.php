@@ -98,7 +98,14 @@
 
             </td>
             <td class="py-3 px-6 text-center">
-              {{ $producto->categoria->categoria }}
+              @if (!empty($producto->categoria->categoria))
+                {{ $producto->categoria->categoria }}
+              @else
+                <span class="bg-red-100 text-red-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-lg">
+                  Sin Categoría 
+                </span>
+              @endif
+              
             </td>
             <td class="py-3 px-6 text-center">
               {{ number_format($producto->costo , 2) }}
