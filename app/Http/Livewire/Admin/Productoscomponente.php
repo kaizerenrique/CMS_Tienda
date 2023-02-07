@@ -154,13 +154,19 @@ class Productoscomponente extends Component
 
         $categoria = Categoria::find($this->producto['categoria_id']);
 
+        if(empty($this->producto['codigo'])){
+            $codigo = $this->codegeneradorproducto();
+        } else {
+            $codigo = $this->producto['codigo'];
+        }
+
         $producto = $categoria->productos()->create([
             'nombre' => $this->producto['nombre'],
             'descripcion' => $this->producto['descripcion'],
             'costo' => $this->producto['costo'],
             'iva' => $this->producto['iva'],
             'metodo' => $this->producto['metodo'],
-            'codigo' => $this->producto['codigo'],                
+            'codigo' => $codigo,                
             'stado' => $this->producto['stado'],
             'destacado' => $this->producto['destacado'],
             'delivery' => $this->producto['delivery'],
