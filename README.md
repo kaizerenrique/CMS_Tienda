@@ -26,7 +26,7 @@ cd CMS_Tienda
 ```
 _Una vez dentro ejecutamos composer_
 ```
-composer install_
+composer install
 ```
 _Luego ejecutamos:_
 ```
