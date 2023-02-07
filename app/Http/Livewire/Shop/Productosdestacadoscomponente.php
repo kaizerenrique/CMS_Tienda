@@ -11,6 +11,8 @@ class Productosdestacadoscomponente extends Component
 {
     use Ditecp;
 
+    public $idetificador;
+
     public function render()
     {
 
@@ -39,5 +41,21 @@ class Productosdestacadoscomponente extends Component
         return view('livewire.shop.productosdestacadoscomponente',[
             'productos' => $productos,
         ]);
+    }
+
+    public function agregaralcarro(Producto $idetificador)
+    {
+        
+
+        \Cart::session(auth()->user()->id)->add(array(
+            'id' => $idetificador->id,
+            'name' => $idetificador->nombre,
+            'price' => $idetificador->costo,
+            'quantity' => 1,
+            'attributes' => array(),
+            'associatedModel' => $idetificador
+        ));
+
+        
     }
 }

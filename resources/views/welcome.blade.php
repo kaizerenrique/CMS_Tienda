@@ -11,6 +11,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+     
+      <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+        
     </head>
 
 <body>
@@ -155,12 +158,12 @@
           <span class="hidden">Next</span>
         </span>
       </button>
-      <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
-    </div>  
-
-     <!-- Product List -->
+      
+    </div> 
+  </div>
+         <!-- Product List -->
   <section class="py-10 bg-gray-100 ">    
-      <livewire:shop.productosdestacadoscomponente />    
+    <livewire:shop.productosdestacadoscomponente />    
   </section>
 
       <div class="py-10 mx-auto full sm:rounded-md bg-blue-500  h-48">
@@ -180,6 +183,7 @@
               </div>  
          </div>
       </div>
+
       <section class="py-10 bg-gray-100">
         <div class="mt-10 mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
@@ -410,6 +414,7 @@
 
         </div>
       </section>
+      
       <footer class="relative bg-blue-500 pt-8 pb-6">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap text-left lg:text-left">
@@ -465,6 +470,6 @@
           </div>
         </div>
       </footer>
-                
+    @livewireScripts   
   </body>
 </html>
