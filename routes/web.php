@@ -20,7 +20,19 @@ use App\Http\Livewire\Admin\Usuarioscomponente;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/nosotros', function () {
+    return view('nosotros');
+})->name('nosotros');
+
+Route::get('/servicios', function () {
+    return view('servicios');
+})->name('servicios');
+
+Route::get('/contacto', function () {
+    return view('contacto');
+})->name('contacto');
 
 //plantilla para modelos de grafico componentes
 Route::get('/plantilla', function () {
