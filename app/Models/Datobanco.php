@@ -16,8 +16,11 @@ class Datobanco extends Model
     protected $fillable = [
         'nrocuenta',
         'cuentadante',
+        'nrotelefono',
         'tipo',
         'documento',
+        'transferencia',
+        'pagomovil'
     ];
 
     /**

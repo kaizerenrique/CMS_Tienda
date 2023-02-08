@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('nrocuenta');
             $table->string('cuentadante');
+            $table->string('nrotelefono')->nullable();;
             $table->string('tipo');
             $table->string('documento');
+            $table->boolean('transferencia')->nullable();
+            $table->boolean('pagomovil')->nullable();
 
             $table->foreignId('banco_id') // UNSIGNED BIG INT
                     ->nullable() // <-- IMPORTANTE: LA COLUMNA DEBE ACEPTAR NULL COMO VALOR VALIDO
