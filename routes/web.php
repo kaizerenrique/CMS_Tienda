@@ -69,6 +69,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('admin/estadisticas', funct
     return view('admin/estadisticas');
 })->name('estadisticas');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('admin/bancos', function () {
+    return view('admin/bancos');
+})->name('bancos');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('shop/detalles', function () {
     return view('shop/detalles');
 })->name('detalles');

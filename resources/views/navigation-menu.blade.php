@@ -21,15 +21,47 @@
                     <x-jet-nav-link href="{{ route('productos') }}" :active="request()->routeIs('productos')">
                         {{ __('Productos') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
-                        {{ __('Usuarios') }}
-                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('clientes') }}" :active="request()->routeIs('clientes')">
                         {{ __('Clientes') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('estadisticas') }}" :active="request()->routeIs('estadisticas')">
                         {{ __('Estadísticas') }}
                     </x-jet-nav-link>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 text-gray-500 text-base ">
+                        <x-jet-dropdown >
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
+                                        {{ __('Configuraciones') }}
+
+                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </x-slot>
+    
+                            <x-slot name="content">
+                                <!-- Administrar Sistema  -->
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Administrar Sistema') }}
+                                </div>
+
+                                <x-jet-dropdown-link href="{{ route('usuarios') }}">
+                                    {{ __('Usuarios') }}
+                                </x-jet-dropdown-link>
+    
+                                <x-jet-dropdown-link href="{{ route('bancos') }}">
+                                    {{ __('Bancos') }}
+                                </x-jet-dropdown-link>
+    
+                                <div class="border-t border-gray-100"></div>
+    
+                                
+                            </x-slot>
+                        </x-jet-dropdown>
+
+                    </div>
                 </div>
             </div>
 
