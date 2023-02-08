@@ -33,13 +33,15 @@
                         <button class="text-sm">Agregar</button>
                     </div>  
                         
-                    @else                    
-                        <a href="{{ route('login') }}">
-                            <button type="button" class="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium 
-                            text-blue-700 focus:outline-none transition duration-500 focus:ring-4 focus:ring-blue-300 md:inline-block rounded-lg">
-                                Login
-                            </button>                        
-                        </a>
+                    @else   
+                        <div class="flex items-center space-x-1.5 px-4 py-1.5 absolute m-2 bottom-0 right-0">
+                            <a href="{{ route('login') }}">
+                                <button type="button" class="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium 
+                                text-blue-700 focus:outline-none transition duration-500 focus:ring-4 focus:ring-blue-300 md:inline-block rounded-lg">
+                                    Login
+                                </button>                        
+                            </a>                    
+                        </div> 
                 @endauth
             </div>            
         </article>        
