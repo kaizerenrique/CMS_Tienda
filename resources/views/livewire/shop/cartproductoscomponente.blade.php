@@ -4,7 +4,6 @@
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
         <div class="rounded-lg md:w-2/3">
             @foreach($cart_items as $cart_item)
-            {{ $cart_item }}
                 <div  class="justify-between mb-6 rounded-lg bg-white p-6 shadow-lg hover:shadow-xl sm:flex sm:justify-start hover:transform hover:scale-105 duration-300">
                     <img src="{{ $cart_item->associatedModel->cover_img }}"
                     alt="product-image" class="w-full rounded-lg sm:w-40" />
