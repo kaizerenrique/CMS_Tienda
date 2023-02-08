@@ -21,13 +21,13 @@
 
                         <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                             <div class="flex items-center border-gray-300">
-                                <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100
+                                <span class="cursor-pointer rounded-l bg-gray-200 py-1 px-3.5 duration-100
                                  hover:bg-blue-500 hover:text-blue-50" wire:click="dec_cantidad({{ $cart_item->id }})">                                    
                                     - 
                                 </span>                        
                                 <input class="h-8 w-16 rounded-lg bg-white text-center text-xs outline-none" type="text" 
                                     value="{{ $cart_item->quantity }}" disabled/>                                     
-                                <span class="cursor-pointer rounded-r bg-blue-400 py-2 px-4 duration-100
+                                <span class="cursor-pointer rounded-l bg-gray-200 py-1 px-3.5 duration-100
                                  hover:bg-blue-500 hover:text-blue-50" wire:click="inc_cantidad({{ $cart_item->id }})">                                    
                                     + 
                                 </span>                                   
