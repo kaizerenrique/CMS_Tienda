@@ -58,4 +58,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Relación con tabla de Persona.
+     * Usuario tiene un perfil de persona. 
+     */
+
+    public function persona()
+    {
+        return $this->hasOne(Persona::class);
+    }
 }
