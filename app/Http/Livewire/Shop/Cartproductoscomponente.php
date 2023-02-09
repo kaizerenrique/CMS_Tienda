@@ -4,11 +4,27 @@ namespace App\Http\Livewire\Shop;
 
 use Livewire\Component;
 use App\Models\Valorusd;
+use \App\Traits\EnvioMensajes;
 use Darryldecode\Cart\Cart;
 
 class Cartproductoscomponente extends Component
 {
+    use EnvioMensajes;
+    public $latitude, $longitude;
 
+    protected $listeners = [
+        'set:latitude-longitude' => 'setLatitudeLongitude'
+    ];
+
+    public function setLatitudeLongitude($latitude, $longitude) 
+    {
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
+
+        $text = $this->latitude.' '.$this->longitude;
+        $this->telegramMensajeGrupo($text);
+    }
+    
     public function render()
     {
         $cart_items = \Cart::session(auth()->user()->id)->getContent();
@@ -21,6 +37,7 @@ class Cartproductoscomponente extends Component
         $monto = number_format($monto, 2);       
 
         $articulos = \Cart::session(auth()->user()->id)->getTotalQuantity();
+        
         
         return view('livewire.shop.cartproductoscomponente', 
         compact('cart_items','monto','articulos'));

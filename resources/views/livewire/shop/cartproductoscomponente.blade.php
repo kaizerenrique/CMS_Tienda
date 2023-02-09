@@ -1,21 +1,7 @@
-  <!-- Script para mostrar las coordenadas-->
-  <script type="text/javascript">
-    if (navigator.geolocation) { //Validar si hay acceso web a la ubicación
-        navigator.geolocation.getCurrentPosition(mostrarUbicacion); //Obtiene la posición
-        } else {
-        alert("¡Error! Este navegador no soporta la Geolocalización.");
-    }
+ 
+<div class="p-6">    
     
-    //Funcion para obtener latitud y longitud
-    function mostrarUbicacion(position) {
-        var latitud = position.coords.latitude; //Obtener latitud
-        var longitud = position.coords.longitude; //Obtener longitud
-        var div = document.getElementById("coordenadas");
-        div.innerHTML = "<br>Latitud: " + latitud + "<br>Longitud: " + longitud; //Imprime latitud y longitud
-    }		
-</script>
-<div class="p-6">
-    <div id='coordenadas'></div>
+
     <h1 class="mb-11 text-center text-2xl font-bold">Administrar Carrito</h1>
     <hr class="my-6 border-blue bg-gray-900">
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
@@ -80,9 +66,23 @@
                 <p class="text-sm text-gray-700">IVA Incluido</p>
               </div>
             </div>
-            <button class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">Cancelar Pedido</button>
+            <button onclick="getLocation()" class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">Cancelar Pedido</button>
         </div>
     </div>
-
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            window.livewire.emit('set:latitude-longitude', latitude, longitude)
+        }
+    </script>
     
 </div>
+		
