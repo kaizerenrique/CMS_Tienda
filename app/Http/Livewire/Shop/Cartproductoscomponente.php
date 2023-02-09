@@ -47,6 +47,7 @@ class Cartproductoscomponente extends Component
     {
         \Cart::session(auth()->user()->id)->remove($idItem);
         $this->emitTo('shop.cartcomponente', 'add_carro'); 
+        session()->flash('message', 'Se a eliminado correctamente');
     }
 
     public function inc_cantidad($rowid)
