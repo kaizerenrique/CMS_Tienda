@@ -63,4 +63,15 @@ class Cartproductoscomponente extends Component
             'quantity' => -1,
         ]);
     }
+
+    public function orden()
+    {
+        $cat = \Cart::session(auth()->user()->id)->getTotalQuantity();
+
+        if($cat == 0 ){
+            return redirect()->route('welcome');
+        } else {
+            return redirect()->route('orden');
+        }        
+    }
 }
