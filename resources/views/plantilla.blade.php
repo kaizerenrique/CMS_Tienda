@@ -71,6 +71,7 @@
   </nav>
   <!-- / menu bar -->
 
+  
   <!-- Product List -->
   <section class="py-10 bg-gray-100">
     <div class="mt-10 mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -243,6 +244,7 @@
         </a>
       </article>
   </section>
+   
   <!--Botones-->
     <button type="button"
       class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">

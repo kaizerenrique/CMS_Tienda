@@ -1,4 +1,21 @@
+  <!-- Script para mostrar las coordenadas-->
+  <script type="text/javascript">
+    if (navigator.geolocation) { //Validar si hay acceso web a la ubicación
+        navigator.geolocation.getCurrentPosition(mostrarUbicacion); //Obtiene la posición
+        } else {
+        alert("¡Error! Este navegador no soporta la Geolocalización.");
+    }
+    
+    //Funcion para obtener latitud y longitud
+    function mostrarUbicacion(position) {
+        var latitud = position.coords.latitude; //Obtener latitud
+        var longitud = position.coords.longitude; //Obtener longitud
+        var div = document.getElementById("coordenadas");
+        div.innerHTML = "<br>Latitud: " + latitud + "<br>Longitud: " + longitud; //Imprime latitud y longitud
+    }		
+</script>
 <div class="p-6">
+    <div id='coordenadas'></div>
     <h1 class="mb-11 text-center text-2xl font-bold">Administrar Carrito</h1>
     <hr class="my-6 border-blue bg-gray-900">
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
