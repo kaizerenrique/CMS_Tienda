@@ -166,7 +166,7 @@
                 <div class="col-span-2 sm:col-span-4">
                     <x-jet-label for="banco" value="{{ __('Nombre del Banco') }}" />
                     <select name="bancoreg.banco" id="bancoreg.banco" wire:model.defer="bancoreg.banco"
-                        class="mt-1 block w-full">
+                        class="mt-1 block w-full  border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="" selected>Seleccione el Banco </option>
                         @foreach ($listadebancos as $banco)
                         <option value="{{ $banco->id }}">{{ $banco->nombre }}</option>
@@ -188,7 +188,7 @@
                 <div class="col-span-2 sm:col-span-2">
                     <x-jet-label for="tipo" value="{{ __('Tipo de Documento') }}" />
                     <select name="bancoreg.tipo" id="bancoreg.tipo" wire:model.defer="bancoreg.tipo"
-                        class="mt-1 block w-full">
+                        class="mt-1 block w-full border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="" selected>Seleccione del tipo de Documento</option>
                         <option value="V">Venezolano</option>
                         <option value="E">Extranjero</option>
@@ -260,7 +260,7 @@
                     <div class="col-span-2 sm:col-span-4">
                         <x-jet-label for="banco" value="{{ __('Nombre del Banco') }}"/>
                         <select name="bancoreg.banco" id="bancoreg.banco" wire:model.defer="bancoreg.banco"
-                            class="mt-1 block w-full" disabled>
+                            class="mt-1 block w-full border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm" disabled>
                             <option value="" selected>Seleccione el Banco </option>
                             @foreach ($listadebancos as $banco)
                             <option value="{{ $banco->id }}">{{ $banco->nombre }}</option>
@@ -280,7 +280,7 @@
                     <div class="col-span-2 sm:col-span-2">
                         <x-jet-label for="tipo" value="{{ __('Tipo de Documento') }}" />
                         <select name="bancoreg.tipo" id="bancoreg.tipo" wire:model.defer="bancoreg.tipo"
-                            class="mt-1 block w-full" disabled>
+                            class="mt-1 block w-full border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm" disabled>
                             <option value="" selected>Seleccione del tipo de Documento</option>
                             <option value="V">Venezolano</option>
                             <option value="E">Extranjero</option>
