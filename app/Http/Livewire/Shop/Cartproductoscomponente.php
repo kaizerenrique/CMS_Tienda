@@ -4,11 +4,27 @@ namespace App\Http\Livewire\Shop;
 
 use Livewire\Component;
 use App\Models\Valorusd;
+use \App\Traits\EnvioMensajes;
 use Darryldecode\Cart\Cart;
 
 class Cartproductoscomponente extends Component
 {
+    use EnvioMensajes;
+    public $latitude, $longitude;
 
+    protected $listeners = [
+        'set:latitude-longitude' => 'setLatitudeLongitude'
+    ];
+
+    public function setLatitudeLongitude($latitude, $longitude) 
+    {
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
+
+        $text = $this->latitude.' '.$this->longitude;
+        $this->telegramMensajeGrupo($text);
+    }
+    
     public function render()
     {
         $cart_items = \Cart::session(auth()->user()->id)->getContent();
@@ -22,6 +38,7 @@ class Cartproductoscomponente extends Component
 
         $articulos = \Cart::session(auth()->user()->id)->getTotalQuantity();
         
+        
         return view('livewire.shop.cartproductoscomponente', 
         compact('cart_items','monto','articulos'));
     }
@@ -30,6 +47,7 @@ class Cartproductoscomponente extends Component
     {
         \Cart::session(auth()->user()->id)->remove($idItem);
         $this->emitTo('shop.cartcomponente', 'add_carro'); 
+        session()->flash('message', 'Se a eliminado correctamente');
     }
 
     public function inc_cantidad($rowid)
@@ -44,5 +62,16 @@ class Cartproductoscomponente extends Component
         \Cart::session(auth()->user()->id)->update($rowid,[
             'quantity' => -1,
         ]);
+    }
+
+    public function orden()
+    {
+        $cat = \Cart::session(auth()->user()->id)->getTotalQuantity();
+
+        if($cat == 0 ){
+            return redirect()->route('welcome');
+        } else {
+            return redirect()->route('orden');
+        }        
     }
 }
