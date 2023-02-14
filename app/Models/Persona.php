@@ -14,7 +14,8 @@ class Persona extends Model
         'cedula',
         'nombres',
         'apellidos',
-        'fnacimiento'
+        'fnacimiento',
+        'sexo'
     ];
 
     /**
@@ -25,5 +26,10 @@ class Persona extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function telefono()
+    {
+        return $this->hasOne(Phone::class);
     }
 }

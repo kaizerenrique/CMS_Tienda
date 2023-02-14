@@ -85,7 +85,8 @@
                     <p class="text-sm text-gray-700">IVA Incluido</p>
                 </div>
             </div>
-            <button onclick="getLocation()" wire:click="orden()"
+            
+            <button {{-- onclick="getLocation()" --}} wire:click="orden()"
                 class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
                 Siguiente
             </button>

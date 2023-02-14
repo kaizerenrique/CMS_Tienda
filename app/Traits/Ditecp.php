@@ -63,12 +63,36 @@ trait Ditecp{
             ]);
 
             $respuesta = $response->getBody()->getContents();
-            $respuesta = json_decode($respuesta);
+            $respuesta = json_decode($respuesta);            
 
-            return $respuesta;
+            $detar = $respuesta->info->error;
+
+            switch ($detar) {
+                case '1':
+                    $res = array(
+                        'stado' => $detar
+                    );
+                    return $res;                   
+                    break;               
+                
+                default:
+                    $res = array(
+                        'stado' => 0,
+                        'nacionalidad' => $respuesta->info->nacionalidad,
+                        'cedula' => $respuesta->info->cedula,
+                        'nombres' => $respuesta->info->nombres,
+                        'apellidos' => $respuesta->info->apellidos
+                    );
+                    return $res;
+                    break;
+            }
+
         }
-        catch (\Illuminate\Http\Client\ConnectionException $e){
-            return $e;
+        catch (\Illuminate\Http\Client\ConnectionException $e){    
+            $res = array(
+                'stado' => 2
+            );        
+            return $res;
         }
     }
 	 
