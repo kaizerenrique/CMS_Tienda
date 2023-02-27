@@ -95,5 +95,34 @@ trait Ditecp{
             return $res;
         }
     }
+
+    public function WhatsApp($mensaje, $telefono, $documento, $nombre)
+    {
+        $token = config('app.ditec_token_api');
+        $url_api = config('app.ditec_WhatsApp_api');
+
+        try{
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer '.$token
+            ])->post($url_api, [
+                'mensaje' => $mensaje,
+                'telefono' => $telefono,
+                'documento' => $documento,
+                'nombre' => $nombre
+            ]);
+
+            $respuesta = $response->getBody()->getContents();
+            $respuesta = json_decode($respuesta);     
+            
+            return $respuesta->status;
+
+        }
+        catch (\Illuminate\Http\Client\ConnectionException $e){    
+            $res = array(
+                'stado' => 2
+            );        
+            return $res;
+        }
+    }
 	 
 }

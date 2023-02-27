@@ -15,6 +15,11 @@ class Ordencomponente extends Component
 
         }
 
+        $monto = \Cart::session(auth()->user()->id)->getTotal(); 
+        $monto = number_format($monto, 2);       
+
+        $articulos = \Cart::session(auth()->user()->id)->getTotalQuantity();
+
         if ($estado == false) {
             //enviar el numero de telefono
             $telefono = $perfil->telefono->codigo_internacional.' '.$perfil->telefono->codigo_operador.' '.$perfil->telefono->nrotelefono;
@@ -25,11 +30,15 @@ class Ordencomponente extends Component
                 'estado' => $estado, 
                 'perfil' => $perfil,
                 'telefono' => $telefono, 
-                'whatsapp' => $whatsapp       
+                'whatsapp' => $whatsapp,
+                'monto' => $monto,
+                'articulos' => $articulos
             ]);
         } else {
             return view('livewire.shop.ordencomponente',[
-                'estado' => $estado,       
+                'estado' => $estado,  
+                'monto' => $monto,
+                'articulos' => $articulos     
             ]);
         }
         

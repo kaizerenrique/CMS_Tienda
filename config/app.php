@@ -164,6 +164,7 @@ return [
     'ditec_token_api' => env('DITEC_API_TOKEN'),
     'ditec_bcv_api' => env('DITEC_API_BCV'),
     'ditec_cedula_api' => env('DITEC_API_CEDULA'),
+    'ditec_WhatsApp_api' => env('DITEC_API_WHATSAPP'),
 
     /*
     |--------------------------------------------------------------------------
