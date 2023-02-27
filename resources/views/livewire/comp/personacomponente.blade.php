@@ -14,7 +14,7 @@
                 <div class="col-span-2 sm:col-span-4">
                     <x-jet-label for="nacionalidad" value="{{ __('Nacionalidad') }}" />
                     <select name="persona.nac" id="persona.nac" wire:model.defer="persona.nac"
-                        class="mt-1 block w-full">
+                        class="focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700 border-gray-300 mt-1 block w-full select select-bordered rounded-lg ">
                         <option value="" selected>Selecciona la Nacionalidad</option>
                         <option value="V">Venezolano</option>
                         <option value="E">Extranjero</option>
@@ -36,10 +36,12 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalPersona', false)" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="ml-3 border border-blue-700 bg-blue-700 text-white rounded-lg hover:bg-blue-800 focus:outline-none focus:shadow-outline"
+            wire:click="$toggle('modalPersona', false)" wire:loading.attr="disabled">
                 {{ __('Cerrar') }}
             </x-jet-secondary-button>
-            <x-jet-danger-button class="ml-3" wire:click="comprobarCedula()" wire:loading.attr="disabled">
+            <x-jet-danger-button class="ml-3 border border-emerald-700 bg-emerald-700 text-white rounded-lg transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline"
+            wire:click="comprobarCedula()" wire:loading.attr="disabled">
                 {{ __('Guardar') }}
             </x-jet-danger-button>
         </x-slot>
@@ -84,7 +86,8 @@
                 </div>
                 <div class="col-span-2 sm:col-span-2">
                     <x-jet-label for="campsexo" value="{{ __('Sexo') }}" />
-                    <select name="datospersona.sexo" id="datospersona.sexo" wire:model.defer="datospersona.sexo" class="mt-1 block w-full">
+                    <select name="datospersona.sexo" id="datospersona.sexo" wire:model.defer="datospersona.sexo" 
+                    class="focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700 border-gray-300 mt-1 block w-full select select-bordered rounded-lg">
                         <option value="" selected>Selecciona el Sexo</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Masculino">Masculino</option>
@@ -94,7 +97,7 @@
                 <div class="col-span-1 sm:col-span-1">
                     <x-jet-label for="codigo_operador" value="{{ __('Operador') }}" />
                     <select name="datospersona.codigo_operador" id="datospersona.codigo_operador" wire:model.defer="datospersona.codigo_operador"
-                        class="mt-1 block w-full">
+                        class="focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-gray-700 border-gray-300 mt-1 block w-full select select-bordered rounded-lg">
                         <option value="" selected>Selecciona el Operador</option>
                         <option value="416">416</option>
                         <option value="426">426</option>
@@ -121,10 +124,12 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalDatosPersona', false)" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="ml-3 border border-blue-700 bg-blue-700 text-white rounded-lg hover:bg-blue-800 focus:outline-none focus:shadow-outline"
+            wire:click="$toggle('modalDatosPersona', false)" wire:loading.attr="disabled">
                 {{ __('Cancelar') }}
             </x-jet-secondary-button>
-            <x-jet-danger-button class="ml-3" wire:click="guardarpersona()" wire:loading.attr="disabled">
+            <x-jet-danger-button class="ml-3 ml-3 border border-emerald-700 bg-emerald-700 text-white rounded-lg transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline" 
+            wire:click="guardarpersona()" wire:loading.attr="disabled">
                 {{ __('Guardar') }}
             </x-jet-danger-button>
         </x-slot>
