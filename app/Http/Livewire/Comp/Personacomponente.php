@@ -91,12 +91,25 @@ class Personacomponente extends Component
             'fnacimiento' => $this->datospersona['fecha_nacimiento'],
             'sexo' => $this->datospersona['sexo']
         ])->telefono()->create([
-            'codigo_internacional' => '+58',
+            'codigo_internacional' => '58',
             'codigo_operador' => $this->datospersona['codigo_operador'] ?? null,
             'nrotelefono' => $this->datospersona['nrotelefono'] ?? null,
             'whatsapp' => $this->datospersona['whatsapp'] ?? 0,
         ]);
+        
 
+        if (!empty($this->datospersona['nrotelefono'])) {
+            
+            $perfil = auth()->user()->persona;
+            if ($perfil->telefono->whatsapp == 1) {                
+                $mensaje = 'Sus datos se han registrado correctamente';
+                $telefono = $perfil->telefono->codigo_internacional.$perfil->telefono->codigo_operador.$perfil->telefono->nrotelefono;
+                $documento = '';
+                $nombre = '';
+                $enviar_whatsapp = $this->WhatsApp($mensaje, $telefono, $documento, $nombre); 
+            }
+        } 
+        
         return redirect()->route('orden');
     }
 }
