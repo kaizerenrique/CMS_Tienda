@@ -36,6 +36,8 @@
         <br>
         <section>
             <h1 class="mb-10 text-center text-2xl font-bold">Te Ofrecemos</h1>
+            <hr class="border mx-2 bg-blue-400">
+            <br>
             <div class="contain grid sm:grid-cols-1 md:grid-cols-2 lg:col-span-1">
               <p class="mt-1 text-12 text-gray 800 px-4">
                 <a class="underline decoration-sky-500 text-12">Servicios Especiales como: </a> Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.
