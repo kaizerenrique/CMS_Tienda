@@ -88,18 +88,16 @@
             <div class="px-4 flex items-center justify-center font-sans overflow-hidden">
                 <div class="px-6 w-full lg:w-5/6">
                  <div class="px-4 bg-white shadow-md rounded my-6">
-                <form action="#" class="space-y-8 h-40 w-40">
                     <div>
-                        <label for="email" class="block mb-2 text-sm-4 text-sm font-medium text-gray-900 dark:text-gray-300">Tu Correo</label>
-                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 center w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="nombre@Email.com" required>
+                        <label for="email" class="block mb-2 text-sm-4 text-sm font-medium text-gray-900">Tu Correo</label>
+                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 center w-full p-2.5" placeholder="nombre@Email.com" required>
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tu Comentario</label>
-                        <textarea id="message" rows="6" class="center p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escribe Aqui..."></textarea>
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Tu Comentario</label>
+                        <textarea id="message" rows="6" class="center p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Escribe Aqui..."></textarea>
                     </div>
                     <button type="submit" class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">Enviar comentario</button>
-                 </form>
-                   </div>
+                </div>
                 </div>
             </div>
           </section>
@@ -110,9 +108,8 @@
                 <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjFhe7O14n9AhUuLFkFHUDfC4EQFnoECBYQAQ&url=https%3A%2F%2Fwww.google.com%2Fmaps%2F%4039.550051%2C-105.782067%2C6z%3Fhl%3Des&usg=AOvVaw3Rqp86ceOQN5Btrq3jNtLe"> 
                  <h1 class=" text-bg-blue-700 px-6 py-6 mx-auto max-w-lg mb-8 text-center text-2xl">Puedes encontrarnos Aqui</h1>
                 </a>
-                </div>
-          </div>
-        <br>
+            </div>
+          <br>
 
         <footer class="relative bg-blue-500 pt-8 pb-6">
             <livewire:comp.footercomponente /> 

@@ -222,10 +222,12 @@
             </div>
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalregistrabanco', false)" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="ml-3 rounded-md bg-blue-700 py-1.5 text-blue-50 hover:bg-blue-800"
+             wire:click="$toggle('modalregistrabanco', false)" wire:loading.attr="disabled">
                 {{ __('Cerrar') }}
             </x-jet-secondary-button>
-            <x-jet-danger-button class="ml-3" wire:click="salvarbanco()" wire:loading.attr="disabled">
+            <x-jet-danger-button class="ml-3 border border-emerald-700 bg-emerald-700 text-white rounded-lg transition duration-700 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline" 
+            wire:click="salvarbanco()" wire:loading.attr="disabled">
                 {{ __('Guardar') }}
             </x-jet-danger-button>
         </x-slot>
@@ -243,10 +245,13 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('mensajeModal', false)" wire:loading.attr="disabled">
-                {{ __('Aceptar') }}
-            </x-jet-secondary-button>
+            <button wire:click="$toggle('mensajeModal', false)" wire:loading.attr="disabled"
+            class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
+            {{ __('Aceptar') }}
+            </button>
         </x-slot>
+
+        
     </x-jet-dialog-modal>
     <!-- Inicio del Modal para Alerta Eliminar cuenta -->
 
@@ -313,9 +318,10 @@
                 </div>
             </x-slot>
             <x-slot name="footer">
-                <x-jet-secondary-button wire:click="$toggle('modalver', false)" wire:loading.attr="disabled">
+                <button wire:click="$toggle('modalver', false)" wire:loading.attr="disabled"
+                class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
                     {{ __('Cerrar') }}
-                </x-jet-secondary-button>
+                </button>
             </x-slot>
         </x-jet-dialog-modal>
         <!-- Fin del Modal para ver banco -->
@@ -331,10 +337,12 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('eliminacuenta', false)" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="ml-3 border border-blue-700 bg-blue-700 text-white rounded-lg hover:bg-blue-500 focus:outline-none focus:shadow-outline"
+            wire:click="$toggle('eliminacuenta', false)" wire:loading.attr="disabled">
                 {{ __('Cancelar') }}
             </x-jet-secondary-button>
-            <x-jet-danger-button class="ml-3" wire:click="Borrarcuenta({{$idcuenta}})" wire:loading.attr="disabled">
+            <x-jet-danger-button class="ml-3 border border-red-700 bg-red-700 text-white rounded-lg hover:bg-red-500 focus:outline-none focus:shadow-outline" 
+            wire:click="Borrarcuenta({{$idcuenta}})" wire:loading.attr="disabled">
                 {{ __('Eliminar') }}
             </x-jet-danger-button>
         </x-slot>
