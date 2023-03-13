@@ -7,6 +7,12 @@ use Livewire\Component;
 
 class Ordencomponente extends Component
 {
+    public $delivery;
+
+    protected $listeners = [
+        'delivery' => 'requiereDelivery'
+    ];
+
     public function render()
     {
         $datosPersona = Persona::where('user_id', auth()->user()->id)->get();        
@@ -24,7 +30,7 @@ class Ordencomponente extends Component
             //enviar el numero de telefono
             $telefono = $perfil->telefono->codigo_internacional.' '.$perfil->telefono->codigo_operador.' '.$perfil->telefono->nrotelefono;
             //identificar si el numero de tlf tiene whatsapp
-            $whatsapp = $perfil->telefono->whatsapp;       
+            $whatsapp = $perfil->telefono->whatsapp;                 
 
             return view('livewire.shop.ordencomponente',[
                 'estado' => $estado, 
@@ -42,5 +48,16 @@ class Ordencomponente extends Component
             ]);
         }
         
+    }
+
+    public function requiereDelivery($delivery)
+    {
+        $this->validate([
+            'delivery' => 'required|boolean',
+        ]);    
+           
+        $this->delivery = $delivery;
+
+        dd($this->delivery);
     }
 }
