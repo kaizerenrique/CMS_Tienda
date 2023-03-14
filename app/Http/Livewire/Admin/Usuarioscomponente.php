@@ -6,23 +6,34 @@ use Livewire\Component;
 use Telegram;
 use \App\Traits\EnvioMensajes;
 use \App\Traits\Ditecp;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\User;
 
 class Usuarioscomponente extends Component
 {
     use EnvioMensajes;
     use Ditecp;
 
+    public $buscar;
+
+    protected $queryString = [
+        'buscar' => ['except' => '']
+    ];
+
     public function render()
     {
-        //$text = 'Prueba del sistema para telegram';
-        //$pro = $this->telegramMensajeGrupo($text);
+        //listar los usuarios y consultar por nombre y correo
+        $usuarios = User::where('name', 'like', '%'.$this->buscar . '%')  //buscar por nombre de usuario
+                      ->orWhere('email', 'like', '%'.$this->buscar . '%') //buscar por correo de usuario
+                      ->orderBy('id','desc') //ordenar de forma decendente
+                      ->paginate(10); //paginacion
 
-        //$nac = 'V';
-        //$cedula = '20124379';
-        //$usd = $this->valorbcv();
-        //$identidad = $this->ceduladeidentidad($nac, $cedula);
-        //dd($usd);
+        $roles = Role::all();
 
-        return view('livewire.admin.usuarioscomponente');
+        return view('livewire.admin.usuarioscomponente',[
+            'usuarios' => $usuarios,
+            'roles' => $roles,
+        ]);
     }
 }
