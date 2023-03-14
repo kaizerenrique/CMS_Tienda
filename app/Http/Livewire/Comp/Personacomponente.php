@@ -5,10 +5,12 @@ namespace App\Http\Livewire\Comp;
 use Livewire\Component;
 use \App\Traits\Ditecp;
 use \App\Models\User;
+use \App\Traits\EnvioMensajes;
 
 class Personacomponente extends Component
 {
     use Ditecp;
+    use EnvioMensajes;
 
     public $modalPersona = false;
     public $persona;
@@ -97,7 +99,7 @@ class Personacomponente extends Component
             'whatsapp' => $this->datospersona['whatsapp'] ?? 0,
         ]);
         
-
+        /* 
         if (!empty($this->datospersona['nrotelefono'])) {
             
             $perfil = auth()->user()->persona;
@@ -109,7 +111,19 @@ class Personacomponente extends Component
                 $enviar_whatsapp = $this->WhatsApp($mensaje, $telefono, $documento, $nombre); 
             }
         } 
-        
+        */
+        $user = auth()->user();
+        $perfil = auth()->user()->persona;
+        $text = "<b>Registro completo:</b>:\n"
+                . "<b>El Usuario: </b>\n"
+                . "$user->name\n"
+                . "$user->email\n"
+                . "<b>Nombre: </b>\n"
+                . "$perfil->nombres\n"
+                . "<b>Apellido: </b>\n"
+                . "$perfil->apellidos\n";
+
+        $this->telegramMensajeGrupo($text);
         return redirect()->route('orden');
     }
 }

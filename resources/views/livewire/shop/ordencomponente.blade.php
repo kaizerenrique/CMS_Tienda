@@ -60,13 +60,13 @@
                       </label>
                       <div class="flex items-center space-x-6">
                         <div class="flex items-center">
-                          <input type="radio" name="radio1" id="radioButton1" class="h-5 w-5" value="0" wire:model.defer="delivery"/>
+                          <input type="radio" name="radio1" id="radioButton1" class="h-5 w-5" wire:click="$emit('requiereDelivery', 0)"/>
                           <label for="radioButton1" class="pl-3 text-base font-medium text-gray-600">
                             Retirar en el local
                           </label>
                         </div>
                         <div class="flex items-center">
-                          <input type="radio" name="radio1" id="radioButton2" class="h-5 w-5" value="1" wire:model.defer="delivery"/>
+                          <input type="radio" name="radio1" id="radioButton2" class="h-5 w-5" value="1" wire:click="$emit('requiereDelivery', 1)"/>
                           <label for="radioButton2" class="pl-3 text-base font-medium text-gray-600">
                             Delivery 
                           </label>
@@ -88,11 +88,15 @@
                 <p class="text-gray-700">Artículos:</p>
                 <p class="text-gray-700">{{ $articulos }}</p>
             </div>
+            <div class="flex justify-between">
+                <p class="text-gray-700">Delivery:</p>
+                <p class="text-gray-700">{{ $valorDelivery }}</p>
+            </div>
             <hr class="my-4" />
             <div class="flex justify-between">
                 <p class="text-lg font-bold">Total</p>
                 <div class="">
-                    <p class="mb-1 text-lg font-bold">{{ $monto }} Bs</p>
+                    <p class="mb-1 text-lg font-bold">{{ $total }} Bs</p>
                     <p class="text-sm text-gray-700">IVA Incluido</p>
                 </div>
             </div>
@@ -102,5 +106,25 @@
                 Siguiente
             </button>
         </div>
+
+        <!-- Inicio del Modal para alertas  -->
+        <x-jet-dialog-modal wire:model="mensajeModal">
+            <x-slot name="title">
+                {{$titulo}}
+            </x-slot>
+
+            <x-slot name="content">
+                {{$mensaje}}
+            </x-slot>
+
+            <x-slot name="footer">
+                <button wire:click="$toggle('mensajeModal', false)" wire:loading.attr="disabled"
+                class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
+                {{ __('Aceptar') }}
+                </button>
+            </x-slot>
+
+            
+        </x-jet-dialog-modal>
     </div>
 </div>
