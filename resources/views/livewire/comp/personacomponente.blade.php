@@ -128,7 +128,7 @@
             wire:click="$toggle('modalDatosPersona', false)" wire:loading.attr="disabled">
                 {{ __('Cancelar') }}
             </x-jet-secondary-button>
-            <x-jet-danger-button class="ml-3 ml-3 border border-emerald-700 bg-emerald-700 text-white rounded-lg transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline" 
+            <x-jet-danger-button class="ml-3 border border-emerald-700 bg-emerald-700 text-white rounded-lg transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline" 
             wire:click="guardarpersona()" wire:loading.attr="disabled">
                 {{ __('Guardar') }}
             </x-jet-danger-button>
