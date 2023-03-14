@@ -101,10 +101,13 @@
                 </div>
             </div>
 
-            <button
-                class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
-                Siguiente
-            </button>
+            @if ($estado == false)  
+                <button wire:click="generarorden()"
+                    class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
+                    Siguiente
+                </button>                                
+            @endif
+            
         </div>
 
         <!-- Inicio del Modal para alertas  -->
@@ -122,9 +125,25 @@
                 class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
                 {{ __('Aceptar') }}
                 </button>
+            </x-slot>            
+        </x-jet-dialog-modal>
+
+        <!-- Inicio del Modal para alertas  -->
+        <x-jet-dialog-modal wire:model="modalOrden">
+            <x-slot name="title">
+                {{$titulo}}
             </x-slot>
 
-            
+            <x-slot name="content">
+                {{$mensaje}}
+            </x-slot>
+
+            <x-slot name="footer">
+                <button wire:click="redireccionar()" wire:loading.attr="disabled"
+                class="mt-6 w-full rounded-md bg-blue-700 py-1.5 font-medium text-blue-50 hover:bg-blue-800">
+                {{ __('Aceptar') }}
+                </button>
+            </x-slot>            
         </x-jet-dialog-modal>
     </div>
 </div>

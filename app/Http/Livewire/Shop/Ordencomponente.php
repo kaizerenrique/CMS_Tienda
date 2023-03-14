@@ -5,15 +5,21 @@ namespace App\Http\Livewire\Shop;
 use App\Models\Persona;
 use Livewire\Component;
 use App\Models\Valorusd;
+use \App\Traits\Sluggenerador;
+use \App\Traits\EnvioMensajes;
 
 class Ordencomponente extends Component
 {
+    use Sluggenerador;
+    use EnvioMensajes;
+
     public $delivery;
-    public $valorDelivery;
+    public $valorDelivery = 0;
 
     public $mensaje;
     public $titulo;
     public $mensajeModal = false;
+    public $modalOrden = false;
 
     protected $listeners = [
         'requiereDelivery'
@@ -78,5 +84,36 @@ class Ordencomponente extends Component
         }
         
         
+    }
+
+    public function generarorden()
+    {
+        $orden = $this->codegeneradorproducto();       
+
+        $this->titulo = 'Nueva Orden';
+        $this->mensaje = 'Su Orden '. $orden .' de compra se a generado exitosamente ';            
+        $this->modalOrden = true; 
+        
+        $user = auth()->user();
+        $perfil = auth()->user()->persona;
+        $text = "<b>Orden Generada:</b>:\n"
+                . "<b>El Usuario: </b>\n"
+                . "$user->name\n"
+                . "$user->email\n"
+                . "<b>Nombre: </b>\n"
+                . "$perfil->nombres\n"
+                . "<b>Apellido: </b>\n"
+                . "$perfil->apellidos\n"
+                . "<b>Orden: </b>\n"
+                . "$orden\n";
+
+        $this->telegramMensajeGrupo($text);
+
+    }
+
+    public function redireccionar()
+    {
+        \Cart::session(auth()->user()->id)->clear();
+        return redirect()->route('welcome');
     }
 }
