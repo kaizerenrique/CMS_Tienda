@@ -46,6 +46,10 @@ class Productoscomponente extends Component
     public $mensajemodal;
     public $identificador;
 
+    //modal y variables ver
+    public $modalVer = false; 
+    public $img_ver;  
+
     //barra de busqueda y check
     public $buscar;
     public $activo;
@@ -199,5 +203,17 @@ class Productoscomponente extends Component
 
         session()->flash('message', 'Se a registrado correctamente el Producto: '.$producto->nombre);
         
+    }
+
+    /**
+     * Despliega el modal para 
+     * Ver Producto
+     */
+    public function verproducto(Producto $producto)
+    {
+        $this->producto = $producto;  
+        $this->img_ver = $producto->cover_img;      
+        $this->modalVer = true;
+
     }
 }
