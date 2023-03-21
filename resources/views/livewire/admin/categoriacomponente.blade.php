@@ -254,7 +254,7 @@
           class="border border-emerald-700 bg-emerald-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-800 focus:outline-none focus:shadow-outline">
           {{ __('Cerrar') }}
         </button>
-        <button type="button" wire:click=" " wire:loading.attr="disabled"
+        <button type="button" wire:click="editarmodal({{ $categoria->id }})" wire:loading.attr="disabled"
           class="border border-blue-700 bg-blue-700 text-white rounded-lg px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-800 focus:outline-none focus:shadow-outline">
           {{ __('Editar') }}
         </button>

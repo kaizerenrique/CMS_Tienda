@@ -174,7 +174,8 @@ class Categoriacomponente extends Component
      * editar categoria
      */
     public function editarmodal( Categoria $categoria)
-    {        
+    {       
+        $this->modalVer = false; 
         $this->categoria = $categoria; 
         $this->img_ver = $categoria->cover_img;
         $this->reset(['imagen']);      
