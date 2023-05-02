@@ -27,7 +27,7 @@
   <br>
    <!--Carusel-->
   <div class="max-w-full mx-auto">
-    <div id="default-carousel" class="relative" data-carousel="static">
+    <div id="default-carousel" class="relative z-10" data-carousel="static">
       <!-- Carousel wrapper -->
       <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 md:h-72 xl:h-80 2xl:h-96">
         <!-- Item 1 -->
