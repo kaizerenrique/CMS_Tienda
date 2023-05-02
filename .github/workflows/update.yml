@@ -15,8 +15,5 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        script: |
-          whoami
-          cd /var/www/html/CMS_Tienda
-          ls -al
+        script: 'cd /var/www/html/CMS_Tienda && ./server_deploy.sh'
 
