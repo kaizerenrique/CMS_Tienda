@@ -1,4 +1,4 @@
-<div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
+<div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between z-20">
     <a href="#" class="flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="mr-3 h-6 text-blue-500 sm:h-9">
@@ -82,7 +82,8 @@
                     class="block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700">
                     Contacto
                 </a>
-            </li>
+            </li>                  
+            
         </ul>
     </div>
 </div>
